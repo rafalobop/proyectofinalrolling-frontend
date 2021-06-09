@@ -15,7 +15,7 @@ const LoginForm = () => {
           <Form.Control type="password" />
         </Form.Group>
         
-        <Button variant="primary" type="submit">
+        <Button className="color-boton" type="submit">
           Ingresar
         </Button>
       </Form>

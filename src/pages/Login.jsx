@@ -19,7 +19,7 @@ const Login = () => {
           <div className="align-self-center w-100 px-lg-5 py-lg-4 p-4 mt-auto mb-auto">
                     <h1 className="font-weight-bold mb-4">Iniciar Sesión</h1>
                     
-                    <p className="text-muted mb-5">Ingresa la siguiente información.</p>                    
+                    <p className=" mb-5">Ingresa la siguiente información.</p>                    
                      
                     <LoginForm />
 
