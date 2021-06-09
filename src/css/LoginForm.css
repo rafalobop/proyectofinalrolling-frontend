@@ -29,3 +29,12 @@ body {
     background-position: center;
 }
 
+.logo img{
+    width: 270px;
+}
+
+.logo-sesion img{
+    width: 300px;
+    margin-bottom: 50px;
+}
+
