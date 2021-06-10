@@ -1,0 +1,12 @@
+.cards_container {
+  width: 100%;
+}
+.card {
+  position: relative;
+  width: 260px;
+  margin: 10px auto;
+  height: 320px;
+  border: 1px solid #000;
+  border-radius: 20px;
+  cursor: pointer;
+}
