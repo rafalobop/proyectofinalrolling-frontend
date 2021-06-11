@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
-// import Footer from './Footer';
+import Footer from './Footer';
 
 const LoginForm = () => {
   return (
@@ -20,7 +20,7 @@ const LoginForm = () => {
           Ingresar
         </Button>
       </Form>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
