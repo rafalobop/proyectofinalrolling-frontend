@@ -1,40 +1,37 @@
 body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 300;
-    color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #ffffff;
 }
 
-.bg-dark{
-    background-color: #084298 !important;
+.bg-dark {
+  background-color: #084298 !important;
 }
 
 .btn {
-    font-weight: 400px;
-    padding: 10px 20px;
-    border-radius: 50px;
-    min-width: 100px;
+  font-weight: 400px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  min-width: 100px;
 }
 
-.color-boton{
-    background-color: #0d6efd;
-    color: #ffffff;
+.color-boton {
+  background-color: #0d6efd;
+  color: #ffffff;
 }
-
-
 
 .login-bg {
-    background-image: url('../images/img1.jpg');
-    background-size: cover;
-    background-position: center;
+  background-image: url('../images/img1.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
-.logo img{
-    width: 270px;
+.logo img {
+  width: 270px;
 }
 
-.logo-sesion img{
-    width: 300px;
-    margin-bottom: 50px;
+.logo-sesion img {
+  width: 300px;
+  margin-bottom: 50px;
 }
-
