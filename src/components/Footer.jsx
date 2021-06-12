@@ -27,7 +27,7 @@ const Footer = () => {
             <div className="team_container">
               <div className="cards_container">
                 {integrantes.map((datos) => {
-                  return <Card datos={datos} />;
+                  return <Card key={Math.random()} datos={datos} />;
                 })}
               </div>
             </div>

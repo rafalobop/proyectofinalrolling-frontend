@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logo2 from '../images/logo2.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTools } from '@fortawesome/free-solid-svg-icons';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import ModalFaq from './ModalFaq';
 import '../css/navbar.css';
+import { Modal } from 'bootstrap';
 const Navbar = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const toggle = () => setOpenModal(!openModal);
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-container">
@@ -34,7 +38,12 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                <FontAwesomeIcon icon={faQuestionCircle} className="nav-icon" />
+                <FontAwesomeIcon
+                  icon={faQuestionCircle}
+                  className="nav-icon"
+                  onClick={toggle}
+                />
+                <ModalFaq openModal={openModal} toggle={toggle} />
               </a>
             </li>
             <li className="nav-item">
