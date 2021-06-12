@@ -6,8 +6,9 @@ import { faTools } from '@fortawesome/free-solid-svg-icons';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import ModalFaq from './ModalFaq';
+import ModalSettings from './ModalSettings';
 import '../css/navbar.css';
-import { Modal } from 'bootstrap';
+
 const Navbar = () => {
   const [openModal, setOpenModal] = useState(false);
   const toggle = () => setOpenModal(!openModal);
@@ -33,7 +34,12 @@ const Navbar = () => {
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
               <a className="nav-link" href="#">
-                <FontAwesomeIcon icon={faTools} className="nav-icon" />
+                <FontAwesomeIcon
+                  icon={faTools}
+                  className="nav-icon"
+                  onClick={toggle}
+                />
+                <ModalSettings openModal={openModal} toggle={toggle} />
               </a>
             </li>
             <li className="nav-item">

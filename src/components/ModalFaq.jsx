@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 
-const ModalFaq = () => {
-  const [openModal, setOpenModal] = useState(false);
-  const toggle = () => setOpenModal(!openModal);
+const ModalFaq = ({ openModal, toggle }) => {
   return (
     <>
       <Modal isOpen={openModal} toggle={toggle}>

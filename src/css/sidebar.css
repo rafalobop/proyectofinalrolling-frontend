@@ -1,7 +1,7 @@
 .sidebar {
   width: 100%;
   display: flex;
-  background: url(../images/img1.jpg) no-repeat center;
+
   background-size: contain;
 }
 .list-container {
