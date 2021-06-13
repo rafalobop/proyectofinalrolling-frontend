@@ -1,12 +1,13 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import '../css/modalfaq.css';
 
 const ModalFaq = ({ openModal, toggle }) => {
   return (
     <>
       <Modal isOpen={openModal} toggle={toggle}>
         <ModalHeader>
-          <h2>Preguntas Frecuentes</h2>
+          <h5>Preguntas Frecuentes</h5>
         </ModalHeader>
         <ModalBody>
           <div className="question">
@@ -18,6 +19,7 @@ const ModalFaq = ({ openModal, toggle }) => {
               la ventana que se abre. Presionas guardar cuando termines, y
               listo!.
             </p>
+            <hr />
           </div>
           <div className="question">
             <p>¿Si cierro sesión se pierden los datos que no guarde?</p>
@@ -27,6 +29,7 @@ const ModalFaq = ({ openModal, toggle }) => {
               El sistema Codeschool guarda todos los datos de tu sesión para que
               no pierdas nada que no hayas podido guardar.
             </p>
+            <hr />
           </div>
           <div className="question">
             <p>¿Puedo crear un nuevo usuario con mi mail?</p>
