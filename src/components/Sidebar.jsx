@@ -9,10 +9,14 @@ import {
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import '../css/sidebar.css';
+import ModalSignout from './ModalSignout';
 
 const Sidebar = () => {
   const [toggle, setToggle] = useState(false);
   const showSidebar = () => setToggle(!toggle);
+
+  const [openModalSignout, setOpenModalSignout] = useState(false);
+  const toggleSignout = () => setOpenModalSignout(!openModalSignout);
 
   return (
     <>
@@ -54,8 +58,12 @@ const Sidebar = () => {
                 <div className="item-icon">
                   <FontAwesomeIcon icon={faSignOutAlt} />
                 </div>
-                <div className="item-link">
-                  <Link to="/">Cerrar Sesión</Link>
+                <div className="item-link" onClick={toggleSignout}>
+                  <ModalSignout
+                    openModalSignout={openModalSignout}
+                    toggleSignout={toggleSignout}
+                  />
+                  Cerrar Sesión
                 </div>
               </div>
             </li>
