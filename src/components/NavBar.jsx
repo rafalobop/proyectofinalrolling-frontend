@@ -7,11 +7,18 @@ import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import ModalFaq from './ModalFaq';
 import ModalSettings from './ModalSettings';
+import ModalSignout from './ModalSignout';
 import '../css/navbar.css';
 
 const Navbar = () => {
   const [openModal, setOpenModal] = useState(false);
   const toggle = () => setOpenModal(!openModal);
+
+  const [openModalSettings, setOpenModalSettings] = useState(false);
+  const toggleSettings = () => setOpenModalSettings(!openModalSettings);
+
+  const [openModalSignout, setOpenModalSignout] = useState(false);
+  const toggleSignout = () => setOpenModalSignout(!openModalSignout);
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-container">
@@ -37,9 +44,12 @@ const Navbar = () => {
                 <FontAwesomeIcon
                   icon={faTools}
                   className="nav-icon"
-                  onClick={toggle}
+                  onClick={toggleSettings}
                 />
-                <ModalSettings openModal={openModal} toggle={toggle} />
+                <ModalSettings
+                  openModalSettings={openModalSettings}
+                  toggleSettings={toggleSettings}
+                />
               </a>
             </li>
             <li className="nav-item">
@@ -54,7 +64,15 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                <FontAwesomeIcon icon={faUser} className="nav-icon" />
+                <FontAwesomeIcon
+                  icon={faUser}
+                  className="nav-icon"
+                  onClick={toggleSignout}
+                />
+                <ModalSignout
+                  openModalSignout={openModalSignout}
+                  toggleSignout={toggleSignout}
+                />
               </a>
             </li>
           </ul>
