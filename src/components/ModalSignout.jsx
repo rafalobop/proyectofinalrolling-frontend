@@ -1,5 +1,8 @@
 import React from 'react';
-import { Modal, ModalBody, ModalHeader, ModalFooter, Button } from 'reactstrap';
+import { Modal, ModalBody, ModalHeader } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import '../css/modalsignout.css';
+import Loader from '../components/Loader';
 
 const ModalSignout = ({ toggleSignout, openModalSignout }) => {
   return (
@@ -8,12 +11,23 @@ const ModalSignout = ({ toggleSignout, openModalSignout }) => {
         <ModalHeader>
           <h5>Cerrar Sesión</h5>
         </ModalHeader>
-        <ModalBody></ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={toggleSignout}>
-            Cerrar
-          </Button>
-        </ModalFooter>
+        <ModalBody>
+          <p className="signout">¿Desea cerrar sesión?</p>
+          <Link to="/">
+            <button
+              className="footer-btn"
+              onClick={() => {
+                <Loader />;
+                setInterval(() => {}, 2000);
+              }}
+            >
+              Si
+            </button>
+          </Link>
+          <button className="footer-btn" onClick={toggleSignout}>
+            No
+          </button>
+        </ModalBody>
       </Modal>
     </>
   );

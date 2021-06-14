@@ -1,7 +1,6 @@
 .sidebar {
   width: 100%;
   display: flex;
-
   background-size: contain;
 }
 .list-container {
@@ -86,5 +85,11 @@
 @media screen and (min-width: 840px) {
   .sidebar {
     width: 28%;
+  }
+  .list-container {
+    margin-left: 0%;
+  }
+  .toggle-container {
+    display: none;
   }
 }
