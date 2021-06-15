@@ -1,41 +1,41 @@
 body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 300;
-    color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #ffffff;
 }
 
-.color-login{
-    background-color: #084298;
+.color-login {
+  background-color: #084298;
 }
 
 .btn {
-    font-weight: 400px;
-    padding: 10px 20px;
-    border-radius: 50px;
-    min-width: 100px;
+  font-weight: 400px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  min-width: 100px;
 }
 
-.color-boton{
-    background-color: #0d6efd;
-    color: #ffffff;
+.color-boton {
+  background-color: #0d6efd;
+  color: #ffffff;
 }
 
-.left-login{
-    background-image: url('../images/img1.jpg');
-    background-size: cover;
-    background-position: center;
+.left-login {
+  background-image: url('../images/img1.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
-.logo img{
-    width: 270px;
+.logo img {
+  width: 270px;
 }
 
-.logo-form img{
-    width: 300px;
-    margin-bottom: 50px;
+.logo-form img {
+  width: 300px;
+  margin-bottom: 50px;
 }
 
-.titulo-sesion{
-    font-size: 35px;
+.titulo-sesion {
+  font-size: 35px;
 }

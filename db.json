@@ -1,0 +1,39 @@
+{
+  "integrantes": [
+    {
+      "id": 1,
+      "name": "Rafael Lobo Plaza",
+      "imagen": "http://drive.google.com/uc?export=view&id=1-etIcaWOimWAFLazfs50Istc0ktJiZ-u",
+      "repositorio": "https://github.com/rafalobop",
+      "whatsapp": "wa.link/awmrex"
+    },
+    {
+      "id": 2,
+      "name": "Gabriel Iñigo",
+      "imagen": "http://drive.google.com/uc?export=view&id=(el id)",
+      "repositorio": "https://github.com/ginigo-arg",
+      "whatsapp": "wa.link/xna9id"
+    },
+    {
+      "id": 3,
+      "name": "Rocio D'Andrea",
+      "imagen": "http://drive.google.com/uc?export=view&id=(el id)",
+      "repositorio": "https://github.com/RocioDAndrea",
+      "whatsapp": "wa.link/7syv0y"
+    },
+    {
+      "id": 4,
+      "name": "Carolina DeFranceschi",
+      "imagen": "http://drive.google.com/uc?export=view&id=(el id)",
+      "repositorio": "https://github.com/carolina-d",
+      "whatsapp": "wa.link/61p2yc"
+    },
+    {
+      "id": 5,
+      "name": "Javier Cáceres",
+      "imagen": "http://drive.google.com/uc?export=view&id=(el id)",
+      "repositorio": "https://github.com/jcaceres2",
+      "whatsapp": "wa.link/3e9ocp"
+    }
+  ]
+}
