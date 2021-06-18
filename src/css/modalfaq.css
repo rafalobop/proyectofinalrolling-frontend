@@ -1,0 +1,38 @@
+.modal .modal-content {
+  background: transparent;
+  border: none;
+  border-radius: 30px;
+}
+
+.modal-header {
+  background: #084298;
+  color: #fff;
+}
+.modal-header .modal-title {
+  text-align: center;
+  width: 100%;
+}
+.modal-body {
+  background: #fff;
+  text-align: center;
+}
+.modal-body .question {
+  font-weight: 700;
+}
+.modal-footer {
+  background: #084298;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-footer .btn {
+  background: #fff;
+  color: #084298;
+  font-weight: 600;
+}
+.modal-footer .btn:hover {
+  background: #c2c2c2;
+  color: #084298;
+  border-radius: 20px;
+  transition: ease-in-out 0.4s;
+}
