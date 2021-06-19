@@ -11,7 +11,7 @@ const Login = () => {
       <Row>
         <Col xl={7} lg={7} className="left-login d-none d-lg-block">
           <div className="logo w-50 position-absolute p-2 ml-2">
-            <img src={logo} class="img-fluid" />
+            <img src={logo} className="img-fluid" />
           </div>
         </Col>
         <Col
@@ -28,7 +28,7 @@ const Login = () => {
             <h1 className="titulo-sesion font-weight-bold mb-4">
               Iniciar Sesión
             </h1>
-            <p className=" mb-4">Ingresa la siguiente información.</p>
+            <p className="mb-4">Ingresa la siguiente información.</p>
 
             <LoginForm />
           </div>

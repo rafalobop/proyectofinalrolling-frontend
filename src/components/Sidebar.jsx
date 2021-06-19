@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBook,
@@ -8,10 +8,62 @@ import {
   faSignOutAlt,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import jwt_decode from 'jwt-decode'; //Paquete para decodificar el Token
+
 import '../css/sidebar.css';
+import { getMaterias } from '../helpers/rutaMateria';
 import ModalSignout from './ModalSignout';
 
 const Sidebar = () => {
+  const location = useLocation();
+  const history = useHistory();
+  const [user, setUser] = useState('Iniciar sesión');
+  const [payload, setPayload] = useState({
+    role: '',
+  });
+
+  const [materias, setMaterias] = useState({
+    data: {},
+    loading: true,
+  });
+  const ActualizarData = () => {
+    getMaterias().then((datos) => {
+      setMaterias({
+        data: datos,
+        loading: false,
+      });
+    });
+  };
+
+  //Manejo el deslogueo de la web
+  const handleLogin = () => {
+    localStorage.setItem('token', JSON.stringify(''));
+    localStorage.setItem('id', JSON.stringify(''));
+    localStorage.setItem('usuario', JSON.stringify('Iniciar Sesión'));
+    setUser(JSON.parse(localStorage.getItem('usuario')));
+    setPayload({ role: '' });
+    history.push('/');
+  };
+
+  const checkToken = () => {
+    let token = JSON.parse(localStorage.getItem('token')) || '';
+    if (token.length > 0) {
+      let token_decode = jwt_decode(localStorage.getItem('token')); //Obteniendo los datos del payload
+      setPayload(token_decode.usuario);
+    }
+  };
+
+  //Si cambia la locación asigno a user el valor de localstorage
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem('usuario')) || '');
+    ActualizarData();
+    checkToken();
+  }, [location]);
+
+  useEffect(() => {
+    ActualizarData();
+  }, []);
+
   const [toggle, setToggle] = useState(false);
   const showSidebar = () => setToggle(!toggle);
 
@@ -65,6 +117,22 @@ const Sidebar = () => {
                   />
                   Cerrar Sesión
                 </div>
+                <span>
+                  {payload.role === 'ADMIN_ROLE' && (
+                    <Link
+                      to="/admin"
+                      className="text-decoration-none text-muted mr-2"
+                    >
+                      Administrador
+                    </Link>
+                  )}
+                  <button
+                    className="btn btn-outline-info"
+                    onClick={handleLogin}
+                  >
+                    {user}
+                  </button>
+                </span>
               </div>
             </li>
           </ul>
