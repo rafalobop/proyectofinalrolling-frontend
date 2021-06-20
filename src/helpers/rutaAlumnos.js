@@ -82,7 +82,7 @@ export const addAlumno = async (datos) => {
   };
   
 //Inactivar un alumno
-/*export const delAlumno = async (id) => {
+export const delAlumno = async (id) => {
     const token = JSON.parse(localStorage.getItem("token")) || "";
     let url = `http://localhost:3004/alumnos/${id}`;
   
@@ -105,6 +105,6 @@ export const addAlumno = async (datos) => {
         loading: false,
       };
     }
-  };*/
+  };
   
   

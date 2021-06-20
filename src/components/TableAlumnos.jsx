@@ -2,7 +2,6 @@ import React , { useState, useEffect } from "react";
 import { getAlumnos, delAlumno } from "../helpers/rutaAlumnos";
 import { Table } from "react-bootstrap";
 import ModalAlumno from "./ModalAlumno";
-import Alumnos from "../pages/Alumnos"
 import '../css/tableAlumnos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -70,10 +69,6 @@ const deleteAlumno = (id) => {
     {!alumnos.loading && (
 
     <>
-    <Alumnos />
-    
-
-
       <div className="container mt-5">
       <div className="row">
         

@@ -2,9 +2,6 @@ import React, { useState } from 'react'
 import TableAlumnos from "../components/TableAlumnos";
 import AddAlumno from "../components/AddAlumno";
 
-
-import '../css/tableAlumnos.css';
-
 const Alumnos = () => {
 
   const [show, setShow] = useState(false);
@@ -16,6 +13,7 @@ const Alumnos = () => {
         <div className="col color-titulo">
           <h1>Lista de Alumnos</h1>
           <hr />
+          <TableAlumnos />
           <>
                 <div className="col">
                   <h3>Bienvenido</h3>
