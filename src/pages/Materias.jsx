@@ -1,10 +1,13 @@
 import React from 'react'
+import Layout from '../components/Layout'
 
 const Materias = () => {
     return (
-        <div>
+        <>
+        <Layout />
             <h1> Pagina para consultar Materias</h1>
-        </div>
+            
+        </>
     )
 }
 
