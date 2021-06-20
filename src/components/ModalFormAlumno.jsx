@@ -15,6 +15,7 @@ const ModalFormAlumno = ({handleClose}) => {
     curso: "",
     fechaNacimiento: "",
     dni: "",  
+    expediente:"",
   });
 
   const handleChange = (e) => {

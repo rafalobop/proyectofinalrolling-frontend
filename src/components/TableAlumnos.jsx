@@ -1,6 +1,8 @@
-import React , { useState } from "react";
+import React , { useState, useEffect } from "react";
+import { getAlumnos, delAlumno } from "../helpers/rutaAlumnos";
 import { Table } from "react-bootstrap";
 import ModalAlumno from "./ModalAlumno";
+import Alumnos from "../pages/Alumnos"
 import '../css/tableAlumnos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -11,49 +13,66 @@ import {
 
 const TableAlumnos = () => {
 
-  const data = [
-    { id: 1, nombreCompleto : "Maria", curso: "1er año" },
-    { id: 2, nombreCompleto : "Felipe", curso: "2do año" },
-    { id: 3, nombreCompleto : "Paula", curso: "3er año" },
-    { id: 4, nombreCompleto: " Lucas ", curso: "4to año" },
-    
-  ];
-
-
 let id_alumno = "";
+
+const [alumnos, setAlumnos] = useState({
+  data: {},
+  loading: true,
+});
+
+const [alumno, setAlumno] = useState({});
+
 
 const [show, setShow] = useState(false);
 
+useEffect(() => {
+  consultaAlumnos();
+}, []);
+
+const consultaAlumnos = (desde) => {
+getAlumnos(desde).then((datos) => {
+  setAlumnos({
+    data: datos,
+    loading: false,
+  });
+});
+};
+
 const handleClose = () => {
   setShow(false);
-  
+  consultaAlumnos();
 };
+
 const handleShow = () => setShow(true);
 
 const modificaAlumno = (id) => {
-  id_alumno = id;
-    handleShow();
+ id_alumno = id;
  
+  setAlumno();
+
+  handleShow();
+
 };
 
-const deleteAlumno = (id) => {
-   window.confirm("Borrar alumno?");
 
+const deleteAlumno = (id) => {
+  let validar = window.confirm("Borrar alumno?");
+  if (validar) {
+    delAlumno(id).then((resp) => {
+      consultaAlumnos();
+    });
+  }
 };
 
 
   return (
     <div>
+    {!alumnos.loading && (
+
     <>
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col color-titulo">
-          <h1>Lista de Alumnos</h1>
-          <hr />
-   
-        </div>
-      </div>
-      </div>
+    <Alumnos />
+    
+
 
       <div className="container mt-5">
       <div className="row">
@@ -65,29 +84,33 @@ const deleteAlumno = (id) => {
               <th>Nº Expediente</th>
               <th>Nombre y Apellido</th>
               <th>Curso</th>
+              <th>Cuota</th>
+
             </tr>
           </thead>
           <tbody>
            
-              {data.map((elemento) => ( 
-                <tr key={elemento._id}>
-                <td>{elemento.id}</td>
-                <td>{elemento.nombreCompleto}</td>
-                <td>{elemento.curso}</td>
+              {alumnos.data.alumnos.map((alumno) => ( 
+                <tr key={alumno._id}>
+                <td>{alumno.id.alumno}</td>
+                <td>{alumno.nombreCompleto}</td>
+                <td>{alumno.anio}</td>
+                <td>{alumno.cuota}</td>
+
                
                 <td>
                   <button
                     className="btn btn-outline-dark mr-2">
                      <FontAwesomeIcon
                     icon={faAddressCard} onClick={() => {
-                      modificaAlumno();
+                      modificaAlumno(alumno._id);
                     }}/>
                   </button>
                   <button
                     className="btn btn-outline-dark"> <FontAwesomeIcon
                     icon={faTrash}
                     onClick={() => {
-                      deleteAlumno();
+                      deleteAlumno(alumno._id);
                     }}
                   />
                   </button>
@@ -107,9 +130,12 @@ const deleteAlumno = (id) => {
         <ModalAlumno
           show={show}
           handleClose={handleClose}
+          alumno={alumno.alumno}
+
           
         />
       </>
+    )}
     
   </div>
 );
