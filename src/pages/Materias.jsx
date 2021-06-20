@@ -1,14 +1,22 @@
 import React from 'react'
-import Layout from '../components/Layout'
+import { getMaterias } from '../helpers/rutaMateria'
+import NavBar from '../components/NavBar';
+import Sidebar from '../components/Sidebar';
+
 
 const Materias = () => {
+    getMaterias()
+
     return (
         <>
-        <Layout />
+        <NavBar />
+        <Sidebar />
+            <div>
             <h1> Pagina para consultar Materias</h1>
-            
+            </div>
         </>
     )
 }
 
-export default Materias
+
+export default Materias;
