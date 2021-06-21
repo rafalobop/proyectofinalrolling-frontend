@@ -1,8 +1,8 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 15px;
   font-weight: 300;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .color-login {
@@ -22,7 +22,7 @@ body {
 }
 
 .left-login {
-  background-image: url('../images/img1.jpg');
+  background-image: url("../images/img1.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -36,7 +36,9 @@ body {
   margin-bottom: 50px;
 }
 
-.titulo-sesion {
-  font-size: 35px;
-  color: #fff;
+@media (max-width: 578px) {
+  .titulo-sesion {
+    font-size: 40px !important;
+    color: #fff;
+  }
 }
