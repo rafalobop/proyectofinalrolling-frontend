@@ -3,6 +3,8 @@ import NavBar from '../components/NavBar';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
 import '../css/home.css';
+import Cookies from '../components/Cookies';
+import MostrarCookies from '../components/Cookies';
 
 const Home = () => {
   return (
@@ -39,6 +41,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Cookies />
       <Footer />
     </>
   );

@@ -2,7 +2,7 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 15px;
   font-weight: 300;
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .color-login {
@@ -31,14 +31,23 @@ body {
   width: 270px;
 }
 
+form.Label {
+  color: #fff !important;
+}
+
 .logo-form img {
   width: 300px;
   margin-bottom: 50px;
 }
 
+.logo-form h1,
+.logo-form p {
+  color: #fff !important;
+}
+
 @media (max-width: 578px) {
   .titulo-sesion {
     font-size: 40px !important;
-    color: #fff;
+    color: #fff !important;
   }
 }
