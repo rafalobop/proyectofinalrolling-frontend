@@ -19,6 +19,7 @@ const Navbar = () => {
 
   const [openModalSignout, setOpenModalSignout] = useState(false);
   const toggleSignout = () => setOpenModalSignout(!openModalSignout);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-container">

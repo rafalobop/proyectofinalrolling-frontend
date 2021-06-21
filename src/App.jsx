@@ -6,11 +6,12 @@ import TableAlumnos from './components/TableAlumnos';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+// import Layout from './components/Layout';
 const App = () => {
   return (
     <>
       <Router>
+        {/* <Layout /> */}
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/home" component={Home} />
