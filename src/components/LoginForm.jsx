@@ -21,7 +21,7 @@ const LoginForm = () => {
       localStorage.setItem('id', JSON.stringify(user.data.usuario._id));
       localStorage.setItem('usuario', JSON.stringify(user.data.usuario.nombre));
 
-      history.push('./');
+      history.push('./home');
     }
   }, [user, history]);
 
@@ -56,8 +56,8 @@ const LoginForm = () => {
           <Form.Control
             type="email"
             name="email"
-            onChange={handleChange}
             value={formValues.email}
+            onChange={handleChange}
           />
         </Form.Group>
 
@@ -65,9 +65,9 @@ const LoginForm = () => {
           <Form.Label>Contraseña</Form.Label>
           <Form.Control
             type="password"
-            name="email"
-            onChange={handleChange}
+            name="password"
             value={formValues.password}
+            onChange={handleChange}
           />
         </Form.Group>
 
