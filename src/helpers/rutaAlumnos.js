@@ -1,7 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 
-//Traer todos los alumnos con el limite y desde que registro
+
 export const getAlumnos = async (desde = 0, limite = 10) => {
   let url = `http://localhost:3004/alumnos?desde=${desde}&limite=${limite}`;
 
@@ -44,14 +44,6 @@ export const getAlumnoId = async (id) => {
     };
   }
 };
-
-
-
-
-
-
-
-
 
 //Crear nuevo alumno
 export const addAlumno = async (datos) => {

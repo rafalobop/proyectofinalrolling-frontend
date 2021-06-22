@@ -10,6 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 
+
 const TableAlumnos = () => {
 
 let id_alumno = "";
@@ -19,7 +20,9 @@ const [alumnos, setAlumnos] = useState({
   loading: true,
 });
 
-const [alumno, setAlumno] = useState({});
+const [alumno, setAlumno] = useState({
+ 
+});
 const [show, setShow] = useState(false);
 
 useEffect(() => {
@@ -88,7 +91,7 @@ const deleteAlumno = (id) => {
            
               {alumnos.data.alumnos.map((alumno) => ( 
                 <tr key={alumno._id}>
-                <td>{alumno.expediente.expediente}</td>
+                <td>{alumno.alumno.expediente}</td>
                 <td>{alumno.nombreCompleto}</td>
                 <td>{alumno.curso}</td>
           

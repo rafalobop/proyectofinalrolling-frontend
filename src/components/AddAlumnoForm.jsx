@@ -9,7 +9,6 @@ const AddAlumnoForm = ({ setShow }) => {
     contacto: "",
     fechaNacimiento: "",
     dni: "",
-    expediente: "",
     alumno: id,
   });
 
@@ -87,6 +86,7 @@ const AddAlumnoForm = ({ setShow }) => {
         <input
           type="text"
           className="form-control"
+          placeholder="22/06/2021"
           name="fechaNacimiento"
           required
           value={formValues.fechaNacimiento}

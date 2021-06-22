@@ -1,11 +1,11 @@
 import axios from 'axios';
 import qs from 'qs';
 
-export const postLogin = async (datos) => {
+export const postUserLog = async (datos) => {
   const url = `http://localhost:3004/login`;
 
   const options = {
-    method: 'POST',
+    method: 'GET',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
     data: qs.stringify(datos),
   };
