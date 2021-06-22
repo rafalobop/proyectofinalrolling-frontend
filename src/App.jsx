@@ -16,14 +16,10 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/home" component={Home} />
-
-
           <Route component={Error404} />
-
           <Route path="/alumnos" component={Alumnos} />
           <Route path="/materias" component={MateriasPage} />
           <Route component={Error404} />
-
         </Switch>
       </Router>
     </>
