@@ -3,7 +3,7 @@ import NavBar from '../components/NavBar';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
 import '../css/home.css';
-//import Cookies from '../components/Cookies';
+import Cookies from '../components/Cookies';
 
 const Home = () => {
   const [usuarioLogeado, setUsuarioLogeado] = useState({
@@ -75,7 +75,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-  
+      <Cookies />
       <Footer />
     </>
   );
