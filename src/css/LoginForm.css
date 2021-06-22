@@ -1,19 +1,11 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
-  font-weight: 300;
   color: #ffffff;
 }
 
 .color-login {
   background-color: #084298;
-}
-
-.btn {
-  font-weight: 400px;
-  padding: 10px 20px;
-  border-radius: 50px;
-  min-width: 100px;
 }
 
 .color-boton {
@@ -38,5 +30,9 @@ body {
 
 .titulo-sesion {
   font-size: 35px;
+  color: #fff;
+}
+
+.login-form{
   color: #fff;
 }

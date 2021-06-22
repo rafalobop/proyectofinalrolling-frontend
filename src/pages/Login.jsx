@@ -14,22 +14,13 @@ const Login = () => {
             <img src={logo} className="img-fluid" alt="logo" />
           </div>
         </Col>
-        <Col
-          xl={5}
-          lg={5}
-          className="color-login d-flex flex-column align-items-end min-vh-100"
-        >
+        <Col xl={5} lg={5} className="color-login d-flex min-vh-100">
           <div className="logo-form p-4 mt-auto mb-auto">
-            <img
-              src={logo2}
-              className="w-100 mx-auto logo-form"
-              alt="img-fluid"
-            />
+            <img src={logo2} className="w-100 mx-auto logo-form" alt="img-fluid"/>
             <h1 className="titulo-sesion font-weight-bold mb-4">
               Iniciar Sesión
             </h1>
-            <p className="mb-4">Ingresa la siguiente información.</p>
-
+            <p className="mb-4 login-form">Ingresa la siguiente información.</p>
             <LoginForm />
           </div>
         </Col>
