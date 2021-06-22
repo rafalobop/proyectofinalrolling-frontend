@@ -17,7 +17,7 @@ import ModalSignout from './ModalSignout';
 const Sidebar = () => {
   const location = useLocation();
   const history = useHistory();
-  const [user, setUser] = useState('Iniciar sesión');
+  const [user, setUser] = useState('');
   const [payload, setPayload] = useState({
     role: '',
   });
@@ -39,8 +39,8 @@ const Sidebar = () => {
   const handleLogin = () => {
     localStorage.setItem('token', JSON.stringify(''));
     localStorage.setItem('id', JSON.stringify(''));
-    localStorage.setItem('usuario', JSON.stringify('Iniciar Sesión'));
-    setUser(JSON.parse(localStorage.getItem('usuario')));
+    localStorage.setItem('usuario', JSON.stringify(''));
+    setUser(JSON.parse(localStorage.getItem('nombre')));
     setPayload({ role: '' });
     history.push('/');
   };
