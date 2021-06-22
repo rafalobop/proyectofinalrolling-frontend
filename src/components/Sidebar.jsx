@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBook,
@@ -8,10 +8,62 @@ import {
   faSignOutAlt,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import jwt_decode from 'jwt-decode'; //Paquete para decodificar el Token
+
 import '../css/sidebar.css';
+import { getMaterias } from '../helpers/rutaMateria';
 import ModalSignout from './ModalSignout';
 
 const Sidebar = () => {
+  const location = useLocation();
+  const history = useHistory();
+  const [user, setUser] = useState('');
+  const [payload, setPayload] = useState({
+    role: '',
+  });
+
+  const [materias, setMaterias] = useState({
+    data: {},
+    loading: true,
+  });
+  const ActualizarData = () => {
+    getMaterias().then((datos) => {
+      setMaterias({
+        data: datos,
+        loading: false,
+      });
+    });
+  };
+
+  //Manejo el deslogueo de la web
+  const handleLogin = () => {
+    localStorage.setItem('token', JSON.stringify(''));
+    localStorage.setItem('id', JSON.stringify(''));
+    localStorage.setItem('usuario', JSON.stringify(''));
+    setUser(JSON.parse(localStorage.getItem('nombre')));
+    setPayload({ role: '' });
+    history.push('/');
+  };
+
+  const checkToken = () => {
+    let token = JSON.parse(localStorage.getItem('token')) || '';
+    if (token.length > 0) {
+      let token_decode = jwt_decode(localStorage.getItem('token')); //Obteniendo los datos del payload
+      setPayload(token_decode.usuario);
+    }
+  };
+
+  //Si cambia la locación asigno a user el valor de localstorage
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem('usuario')) || '');
+    ActualizarData();
+    checkToken();
+  }, [location]);
+
+  useEffect(() => {
+    ActualizarData();
+  }, []);
+
   const [toggle, setToggle] = useState(false);
   const showSidebar = () => setToggle(!toggle);
 
@@ -20,49 +72,49 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="sidebar">
+      <div className="sidebar mt-1">
         <div className={toggle ? 'list-container show' : 'list-container'}>
           <ul className="sidebar-list">
             <li className="list-item">
-              <div className="item-container">
-                <div className="item-icon">
-                  <FontAwesomeIcon icon={faHome} />
+              <Link to="/home">
+                <div className="item-container">
+                  <div className="item-icon">
+                    <FontAwesomeIcon icon={faHome} />
+                  </div>
+                  <div className="item-link">Inicio</div>
                 </div>
-                <div className="item-link">
-                  <Link to="/home">Inicio</Link>
-                </div>
-              </div>
+              </Link>
             </li>
             <li className="list-item">
-              <div className="item-container">
-                <div className="item-icon">
-                  <FontAwesomeIcon icon={faUsers} />
+              <Link to="/materias">
+                <div className="item-container">
+                  <div className="item-icon">
+                    <FontAwesomeIcon icon={faBook} />
+                  </div>
+                  <div className="item-link">Materias</div>
                 </div>
-                <div className="item-link">
-                  <Link to="/alumnos">Alumnos</Link>
-                </div>
-              </div>
+              </Link>
             </li>
             <li className="list-item">
-              <div className="item-container">
-                <div className="item-icon">
-                  <FontAwesomeIcon icon={faBook} />
+              <Link to="/alumnos">
+                <div className="item-container">
+                  <div className="item-icon">
+                    <FontAwesomeIcon icon={faUsers} />
+                  </div>
+                  <div className="item-link">Alumnos</div>
                 </div>
-                <div className="item-link">
-                  <Link to="/materias">Materias</Link>
-                </div>
-              </div>
+              </Link>
             </li>
             <li className="list-item">
+              <ModalSignout
+                openModalSignout={openModalSignout}
+                toggleSignout={toggleSignout}
+              />
               <div className="item-container">
                 <div className="item-icon">
                   <FontAwesomeIcon icon={faSignOutAlt} />
                 </div>
                 <div className="item-link" onClick={toggleSignout}>
-                  <ModalSignout
-                    openModalSignout={openModalSignout}
-                    toggleSignout={toggleSignout}
-                  />
                   Cerrar Sesión
                 </div>
               </div>

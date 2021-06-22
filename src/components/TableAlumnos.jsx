@@ -1,50 +1,142 @@
-import React from "react";
-import ModalCurso from "./ModalCurso";
+import React , { useState, useEffect } from "react";
+import { getAlumnos, delAlumno, getAlumnoId } from "../helpers/rutaAlumnos";
 import { Table } from "react-bootstrap";
+import ModalAlumno from "./ModalAlumno";
+import '../css/tableAlumnos.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faAddressCard,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons';
 
 
 
 const TableAlumnos = () => {
-   
-    const handleClose = () => {
-        setShow(false);
-        consultaCursos();
-      };
-      const handleShow = () => setShow(true);
+
+let id_alumno = "";
+
+const [alumnos, setAlumnos] = useState({
+  data: {},
+  loading: true,
+});
+
+const [alumno, setAlumno] = useState({
+ 
+});
+const [show, setShow] = useState(false);
+
+useEffect(() => {
+  consultaAlumnos();
+}, []);
+
+const consultaAlumnos = (desde) => {
+getAlumnos(desde).then((datos) => {
+  setAlumnos({
+    data: datos,
+    loading: false,
+  });
+});
+};
+
+const handleClose = () => {
+  setShow(false);
+  consultaAlumnos();
+};
+
+const handleShow = () => setShow(true);
+
+const modificaAlumno = (id) => {
+  id_alumno = id;
+
+  getAlumnoId(id_alumno).then((resp) => {
+    console.log(resp);
+    setAlumno(resp);
+
+    handleShow();
+  });
+};
+
+
+const deleteAlumno = (id) => {
+  let validar = window.confirm("Borrar alumno?");
+  if (validar) {
+    delAlumno(id).then((resp) => {
+      consultaAlumnos();
+    });
+  }
+}
+
 
 
   return (
-        <>
-        <div className="container mt-5">
-          <div className="row">
-            <div className="col">
-              <h1>Lista de Alumnos</h1>
-              <hr />
-            </div>
-          </div>
-          </div>
+    <div>
+    {!alumnos.loading && (
 
-          <div className="row">
+    <>
+      <div className="container mt-5">
+      <div className="row">
+        
+        <div className="col-12 mt-4">
+        <Table striped bordered hover className="mt-2">
+          <thead>
+            <tr className="tabla">
+              <th>Nº Expediente</th>
+              <th>Nombre y Apellido</th>
+              <th>Curso</th>
+              <th>Cuota</th>
 
-          <div className="col-12 mt-4">
-          <Table striped bordered hover className="mt-2">
-            <thead>
-              <tr>
-                <th>Nº Expediente</th>
-                <th>Nombre y Apellido</th>
-                <th>Curso</th>
-                <th></th>
-              </tr>
-            </thead>
-            </ Table>
-        </div>
-     </div>
-                    
-        </>
-  );
-};
+            </tr>
+          </thead>
+          <tbody>
+           
+              {alumnos.data.alumnos.map((alumno) => ( 
+                <tr key={alumno._id}>
+                <td>{alumno.alumno.expediente}</td>
+                <td>{alumno.nombreCompleto}</td>
+                <td>{alumno.curso}</td>
+          
+                <td>
+                  <button
+                    className="btn btn-outline-dark mr-2">
+                     <FontAwesomeIcon
+                    icon={faAddressCard} onClick={() => {
+                      modificaAlumno(alumno._id);
+                    }}/>
+                  </button>
+                  <button
+                    className="btn btn-outline-dark"> <FontAwesomeIcon
+                    icon={faTrash}
+                    onClick={() => {
+                      deleteAlumno(alumno._id);
+                    }}
+                  />
+                  </button>
+                </td>
+                </tr>
+                
+              ))}
+             
+          </tbody>
+        </Table>
+  </div>
+  </div>
+  </div>
 
-      
+  
+
+        <ModalAlumno
+          show={show}
+          handleClose={handleClose}
+          alumno={alumno.alumno}
+
+          
+        />
+      </>
+    )}
+    
+  </div>
+);
+}
 
 
 export default TableAlumnos

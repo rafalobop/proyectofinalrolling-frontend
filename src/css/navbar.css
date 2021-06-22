@@ -1,3 +1,7 @@
+.navbar {
+  width: 100%;
+  background-color: #084298;
+}
 .navbar-img {
   width: 180px;
 }
@@ -5,7 +9,7 @@
   font-size: 20px;
   margin-right: 30px;
 }
-.navbar-nav .nav-item .nav-link .nav-icon:hover {
+.navbar-nav .nav-item .nav-link .nav-icon {
   color: #fff;
   transition: 0.3s;
 }

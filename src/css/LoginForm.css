@@ -1,19 +1,11 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 15px;
-  font-weight: 300;
   color: #ffffff;
 }
 
 .color-login {
   background-color: #084298;
-}
-
-.btn {
-  font-weight: 400px;
-  padding: 10px 20px;
-  border-radius: 50px;
-  min-width: 100px;
 }
 
 .color-boton {
@@ -22,7 +14,7 @@ body {
 }
 
 .left-login {
-  background-image: url('../images/img1.jpg');
+  background-image: url("../images/img1.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -31,11 +23,27 @@ body {
   width: 270px;
 }
 
+form.Label {
+  color: #fff !important;
+}
+
 .logo-form img {
   width: 300px;
   margin-bottom: 50px;
 }
 
-.titulo-sesion {
-  font-size: 35px;
+.logo-form h1,
+.logo-form p {
+  color: #fff !important;
+}
+
+@media (max-width: 578px) {
+  .titulo-sesion {
+    font-size: 40px !important;
+    color: #fff !important;
+  }
+}
+
+.login-form{
+  color: #fff;
 }
