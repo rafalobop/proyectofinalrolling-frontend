@@ -4,7 +4,7 @@ import logo2 from '../images/logo2.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTools } from '@fortawesome/free-solid-svg-icons';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import ModalFaq from './ModalFaq';
 import ModalSettings from './ModalSettings';
 import ModalSignout from './ModalSignout';
@@ -66,7 +66,7 @@ const Navbar = () => {
             <li className="nav-item">
               <a className="nav-link" href="#">
                 <FontAwesomeIcon
-                  icon={faUser}
+                  icon={faSignOutAlt}
                   className="nav-icon"
                   onClick={toggleSignout}
                 />
