@@ -11,7 +11,7 @@ const Login = () => {
       <Row>
         <Col xl={7} lg={7} className="left-login d-none d-lg-block">
           <div className="logo w-50 position-absolute p-2 ml-2">
-            <img src={logo} className="img-fluid" />
+            <img src={logo} className="img-fluid" alt="logo" />
           </div>
         </Col>
         <Col
