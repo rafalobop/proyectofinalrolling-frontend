@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { addAlumno } from "../helpers/rutaAlumnos";
 
 const AddAlumnoForm = ({ setShow }) => {
-  //const id = JSON.parse(localStorage.getItem("id"));
+  const id = JSON.parse(localStorage.getItem("Id"));
   const [formValues, setFormValues] = useState({
     nombreCompleto: "",
     domicilio: "",
     contacto: "",
-    año: "",
     fechaNacimiento: "",
     dni: "",
+    expediente: "",
+    alumno: id,
   });
 
   const handleChange = (e) => {
@@ -22,13 +23,13 @@ const AddAlumnoForm = ({ setShow }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addAlumno(formValues).then((resp) => {
-      // console.log(resp);
+      //console.log(resp);
 
       setFormValues({
         nombreCompleto: "",
         domicilio: "",
         contacto: "",
-        anio: "",
+        curso: "",
         fechaNacimiento: "",
         dni: "",
       });
@@ -62,26 +63,27 @@ const AddAlumnoForm = ({ setShow }) => {
       </div>
       <div className="form-group">
         <label>Contacto</label>
-        <textarea
+        <input
           className="form-control"
+          type="text"
           required
           name="contacto"
           value={formValues.contacto}
           onChange={handleChange}
-        ></textarea>
+        />
       </div>
       <div className="form-group">
         <label>Curso</label>
         <input
           type="text"
           className="form-control"
-          name="anio"
-          value={formValues.anio}
+          name="curso"
+          value={formValues.curso}
           onChange={handleChange}
         />
       </div>
       <div className="form-group">
-        <label>Fecha de fechaNacimiento</label>
+        <label>Fecha de Nacimiento</label>
         <input
           type="text"
           className="form-control"

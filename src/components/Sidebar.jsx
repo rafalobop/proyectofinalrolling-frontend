@@ -72,7 +72,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="sidebar">
+      <div className="sidebar mt-1">
         <div className={toggle ? 'list-container show' : 'list-container'}>
           <ul className="sidebar-list">
             <li className="list-item">

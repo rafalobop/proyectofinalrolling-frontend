@@ -1,21 +1,22 @@
 import React, { useState } from "react";
-
 import { Modal, Button } from "react-bootstrap";
+import { modifAlumno } from "../helpers/rutaAlumnos";
+
 import '../css/modalForm.css';
 import { Row, Col } from 'react-bootstrap';
 
 
 
-const ModalFormAlumno = ({handleClose}) => {
+const ModalFormAlumno = ({alumno, handleClose}) => {
   
   const [formValues, setFormValues] = useState({
-    nombreCompleto: "",
-    domicilio: "" ,
-    contacto: "",
-    curso: "",
-    fechaNacimiento: "",
-    dni: "",  
-    expediente:"",
+    nombreCompleto: alumno.nombreCompleto,
+    domicilio: alumno.domicilio,
+    contacto: alumno.contacto,
+    curso: alumno.curso,
+    fechaNacimiento: alumno.fechaNacimiento,
+    dni: alumno.dni,  
+    expediente: alumno.expediente,
   });
 
   const handleChange = (e) => {
@@ -26,16 +27,14 @@ const ModalFormAlumno = ({handleClose}) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleClose();
-    
+    modifAlumno(formValues, alumno._id).then((respuesta) => {
+      handleClose();
+    });
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <Modal.Body >
-        
-
-      
       <Row>
         <Col xl={6} lg={6} >
         <div className="form-group">

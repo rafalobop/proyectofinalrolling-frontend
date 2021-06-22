@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-container">
+      <nav className="navbar navbar-expand-lg navbar-container">
         <Link className="navbar-brand" to="/home">
           <img src={logo2} alt="logo" className="navbar-img" />
         </Link>

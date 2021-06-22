@@ -4,13 +4,13 @@ import ModalFormAlumno from "./ModalFormAlumno";
 import '../css/modalForm.css';
 
 
-const ModalAlumno = ({ show, handleClose }) => {
+const ModalAlumno = ({ show, handleClose, alumno }) => {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title >Modificar datos</Modal.Title>
       </Modal.Header>
-      <ModalFormAlumno handleClose={handleClose} />
+      <ModalFormAlumno alumno={alumno} handleClose={handleClose} />
     </Modal>
   );
   

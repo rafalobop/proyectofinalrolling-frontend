@@ -1,5 +1,5 @@
 import React , { useState, useEffect } from "react";
-import { getAlumnos, delAlumno } from "../helpers/rutaAlumnos";
+import { getAlumnos, delAlumno, getAlumnoId } from "../helpers/rutaAlumnos";
 import { Table } from "react-bootstrap";
 import ModalAlumno from "./ModalAlumno";
 import '../css/tableAlumnos.css';
@@ -20,8 +20,6 @@ const [alumnos, setAlumnos] = useState({
 });
 
 const [alumno, setAlumno] = useState({});
-
-
 const [show, setShow] = useState(false);
 
 useEffect(() => {
@@ -45,12 +43,14 @@ const handleClose = () => {
 const handleShow = () => setShow(true);
 
 const modificaAlumno = (id) => {
- id_alumno = id;
- 
-  setAlumno();
+  id_alumno = id;
 
-  handleShow();
+  getAlumnoId(id_alumno).then((resp) => {
+    console.log(resp);
+    setAlumno(resp);
 
+    handleShow();
+  });
 };
 
 
@@ -61,7 +61,8 @@ const deleteAlumno = (id) => {
       consultaAlumnos();
     });
   }
-};
+}
+
 
 
   return (
@@ -87,12 +88,10 @@ const deleteAlumno = (id) => {
            
               {alumnos.data.alumnos.map((alumno) => ( 
                 <tr key={alumno._id}>
-                <td>{alumno.id.alumno}</td>
+                <td>{alumno.expediente.expediente}</td>
                 <td>{alumno.nombreCompleto}</td>
-                <td>{alumno.anio}</td>
-                <td>{alumno.cuota}</td>
-
-               
+                <td>{alumno.curso}</td>
+          
                 <td>
                   <button
                     className="btn btn-outline-dark mr-2">
@@ -134,6 +133,7 @@ const deleteAlumno = (id) => {
     
   </div>
 );
-};
+}
+
 
 export default TableAlumnos

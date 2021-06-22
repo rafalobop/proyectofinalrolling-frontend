@@ -24,10 +24,38 @@ export const getAlumnos = async (desde = 0, limite = 10) => {
 }
 };
 
+export const getAlumnoId = async (id) => {
+  let url = `http://localhost:3004/alumnos/${id}`;
+  const options = {
+    method: "GET",
+    headers: {
+      "content-type": "application/x-www-form-urlencoded",
+    },
+  };
+  try {
+    const resp = await axios(url, options);
+    const { data } = resp;
+    console.log(data);
+    return data;
+  } catch (error) {
+    return {
+      data: error.response.data,
+      loading: false,
+    };
+  }
+};
+
+
+
+
+
+
+
+
 
 //Crear nuevo alumno
 export const addAlumno = async (datos) => {
-    // console.log(datos);
+    console.log(datos);
     const token = JSON.parse(localStorage.getItem("token")) || "";
     let url = "http://localhost:3004/alumnos";
   
@@ -45,7 +73,7 @@ export const addAlumno = async (datos) => {
       console.log(resp);
       return data;
     } catch (error) {
-      // console.log(error.response.data);
+      console.log(error.response.data);
       return {
         data: error.response.data,
         loading: false,
@@ -55,7 +83,7 @@ export const addAlumno = async (datos) => {
   
   //Actualizar alumno
   export const modifAlumno = async (datos, id) => {
-    // console.log(datos);
+    console.log(datos);
     const token = JSON.parse(localStorage.getItem("token")) || "";
     let url = `http://localhost:3004/alumnos/${id}`;
   
@@ -96,10 +124,10 @@ export const delAlumno = async (id) => {
     try {
       const resp = await axios(url, options);
       const { data } = resp;
-      // console.log(data);
+      console.log(data);
       return data;
     } catch (error) {
-      // console.log(error.response.data);
+      console.log(error.response.data);
       return {
         data: error.response.data,
         loading: false,
