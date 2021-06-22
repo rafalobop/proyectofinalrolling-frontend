@@ -7,6 +7,8 @@ import Alumnos from './pages/Alumnos';
 import Materias from './pages/Materias';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import Layout from './components/Layout';
+import Materias from './pages/Materias';
+
 const App = () => {
   return (
     <>
