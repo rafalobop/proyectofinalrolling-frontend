@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { postLogin } from '../helpers/rutaUsuarios';
+import '../css/LoginForm.css';
 import uuid from 'uuid/dist/v4';
-
 const LoginForm = () => {
   const history = useHistory();
   const [formValues, setFormValues] = useState({
@@ -75,7 +75,7 @@ const LoginForm = () => {
   };
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      <Form className="login-form" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Correo electrónico</Form.Label>
           <Form.Control
