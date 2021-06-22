@@ -62,7 +62,7 @@ const Home = () => {
               <ul className="info-list">
                 <li className="info-item">Expediente: {usuarioLogeado.id}</li>
                 <li className="info-item">
-                  Nombre Institucion: {usuarioLogeado.nombreInstit}
+                  Nombre Institucion: {usuarioLogeado.nombreInst}
                 </li>
                 <li className="info-item">
                   Contacto Institucion: {usuarioLogeado.contactoInst}

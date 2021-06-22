@@ -76,63 +76,47 @@ const Sidebar = () => {
         <div className={toggle ? 'list-container show' : 'list-container'}>
           <ul className="sidebar-list">
             <li className="list-item">
-              <div className="item-container">
-                <div className="item-icon">
-                  <FontAwesomeIcon icon={faHome} />
+              <Link to="/home">
+                <div className="item-container">
+                  <div className="item-icon">
+                    <FontAwesomeIcon icon={faHome} />
+                  </div>
+                  <div className="item-link">Inicio</div>
                 </div>
-                <div className="item-link">
-                  <Link to="/home">Inicio</Link>
-                </div>
-              </div>
+              </Link>
             </li>
             <li className="list-item">
-              <div className="item-container">
-                <div className="item-icon">
-                  <FontAwesomeIcon icon={faUsers} />
+              <Link to="/materias">
+                <div className="item-container">
+                  <div className="item-icon">
+                    <FontAwesomeIcon icon={faBook} />
+                  </div>
+                  <div className="item-link">Materias</div>
                 </div>
-                <div className="item-link">
-                  <Link to="/alumnos">Alumnos</Link>
-                </div>
-              </div>
+              </Link>
             </li>
             <li className="list-item">
-              <div className="item-container">
-                <div className="item-icon">
-                  <FontAwesomeIcon icon={faBook} />
+              <Link to="/alumnos">
+                <div className="item-container">
+                  <div className="item-icon">
+                    <FontAwesomeIcon icon={faUsers} />
+                  </div>
+                  <div className="item-link">Alumnos</div>
                 </div>
-                <div className="item-link">
-                  <Link to="/materias">Materias</Link>
-                </div>
-              </div>
+              </Link>
             </li>
             <li className="list-item">
+              <ModalSignout
+                openModalSignout={openModalSignout}
+                toggleSignout={toggleSignout}
+              />
               <div className="item-container">
                 <div className="item-icon">
                   <FontAwesomeIcon icon={faSignOutAlt} />
                 </div>
                 <div className="item-link" onClick={toggleSignout}>
-                  <ModalSignout
-                    openModalSignout={openModalSignout}
-                    toggleSignout={toggleSignout}
-                  />
                   Cerrar Sesión
                 </div>
-                <span>
-                  {payload.role === 'ADMIN_ROLE' && (
-                    <Link
-                      to="/admin"
-                      className="text-decoration-none text-muted mr-2"
-                    >
-                      Administrador
-                    </Link>
-                  )}
-                  <button
-                    className="btn btn-outline-info"
-                    onClick={handleLogin}
-                  >
-                    {user}
-                  </button>
-                </span>
               </div>
             </li>
           </ul>
