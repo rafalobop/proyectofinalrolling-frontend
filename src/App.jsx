@@ -4,10 +4,8 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Error404 from './pages/Error404';
 import Alumnos from './pages/Alumnos';
-import Materias from './pages/Materias';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Layout from './components/Layout';
-import Materias from './pages/Materias';
+import Materias from './pages/MateriasPage';
 
 const App = () => {
   return (
