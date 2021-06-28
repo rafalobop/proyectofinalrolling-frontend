@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { getMaterias } from '../helpers/rutaMateria';
 import NavBar from '../components/NavBar';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
+import Materias from '../components/Materias';
+import '../css/materiaspage.css';
 
-const Materias = () => {
+const MateriasPage = () => {
+  const [materias, setMaterias] = useState({
+    data: [],
+    loading: true,
+  });
+
+  useEffect(() => {
+    getMaterias().then((materia) => {
+      setMaterias({
+        data: materia,
+        loading: false,
+      });
+    });
+  }, []);
   getMaterias();
 
   return (
     <>
       <NavBar />
       <Sidebar />
-      <div>
-        <h1> Pagina para consultar Materias</h1>
-      </div>
+
+      <Materias materias={materias} />
+
       <Footer />
     </>
   );
 };
 
-export default Materias;
+export default MateriasPage;
