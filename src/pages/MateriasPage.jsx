@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
 import Materias from '../components/Materias';
+import ListaMaterias from '../components/ListaMaterias';
 import '../css/materiaspage.css';
 
 const MateriasPage = () => {
@@ -27,7 +28,7 @@ const MateriasPage = () => {
       <NavBar />
       <Sidebar />
 
-      <Materias materias={materias} />
+      <ListaMaterias materias={materias} />
 
       <Footer />
     </>

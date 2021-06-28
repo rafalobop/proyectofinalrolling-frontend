@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   background-size: contain;
+  margin: 0;
 }
 .list-container {
   background: #084298;
