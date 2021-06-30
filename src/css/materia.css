@@ -1,0 +1,84 @@
+.materias-container {
+  width: 100%;
+
+  flex-direction: column;
+}
+.goback {
+  background: transparent;
+}
+.btn-goback {
+  border: none;
+  color: #084298;
+  background: transparent;
+  font-weight: 700;
+  padding: 10px;
+}
+.btn-goback:hover {
+  color: #0d6efd;
+  transition: 0.4s;
+}
+.materias-top {
+  display: flex;
+}
+.materias-bottom {
+  padding: 30px;
+}
+.materia-title {
+  width: 40%;
+  align-self: center;
+  text-align: start;
+  font-size: 40px;
+  color: #084298;
+  font-weight: 800;
+}
+.form-img {
+  width: 60%;
+  padding: 10px;
+  height: 80%;
+  display: flex;
+  justify-content: flex-end;
+}
+.form-img img {
+  width: 30%;
+  padding: 10px;
+  background-color: #084298;
+  border-radius: 10px;
+}
+.form-materia {
+  display: flex;
+  flex-direction: column;
+}
+.form-materia label {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.form-materia input {
+  margin-bottom: 10px;
+}
+.materias-options {
+  display: flex;
+}
+.materias-years {
+  width: 50%;
+  display: flex;
+}
+.form-materia-check {
+  margin: 20px;
+}
+.form-materia-buttons {
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.form-materia-buttons button {
+  border-radius: 10px;
+  border: none;
+  background: #084298;
+  color: #fff;
+  padding: 10px;
+}
+.form-materia-buttons button:hover {
+  background: #0d6efd;
+  transition: 0.4s;
+}

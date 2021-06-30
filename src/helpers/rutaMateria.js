@@ -3,7 +3,7 @@ import qs from 'qs';
 
 //Traer todos los cursos con el limite y desde que registro
 export const getMaterias = async (/*desde = 0, limite = 4*/) => {
-  let url = `http://localhost:3004/materias`; /*?desde=${desde}&limite=${limite}`*/
+  const url = `http://localhost:3004/materias`; /*?desde=${desde}&limite=${limite}`*/
 
   const options = {
     method: 'GET',

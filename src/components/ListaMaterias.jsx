@@ -1,45 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import '../css/listamaterias.css';
-import MateriasPage from '../pages/MateriasPage';
-import ModalMateria from './ModalMateria';
+// import Materia from './Materia';
+import CardsMaterias from './CardsMaterias';
 
-const ListaMaterias = ({ materias }) => {
-  const [openModal, setOpenModal] = useState(false);
-  const toggle = () => setOpenModal(!openModal);
-  const [materia, setMateria] = useState(false);
+const ListaMaterias = ({ materias, setMateriaSeleccionada }) => {
+  const { data } = materias;
 
-  const verMateria = () => {
-    if (!materia) {
-      setMateria(true);
-      toggle();
-    } else {
-      setMateria(false);
-    }
-  };
-
-  // useEffect(() => {
-  //   verMateria();
-  // }, []);
-  // console.log(materias);
   return (
     <>
       <div className="cards_container">
-        {materias.data.map((materia) => (
-          <div key={materia._id} className="materias_card" onClick={verMateria}>
-            <div className="materias_card-header">
-              <img src={materia.imagen} alt={materia.nombreMateria} />
-            </div>
-            <div className="materias_card-text">
-              <p>{materia.nombreMateria}</p>
-            </div>
-          </div>
-        ))}
+        <CardsMaterias
+          materias={materias}
+          // materia={materia}
+          // setMateria={setMateria}
+          setMateriaSeleccionada={setMateriaSeleccionada}
+        />
       </div>
-      <ModalMateria
-        toggle={toggle}
-        openModal={openModal}
-        setOpenModal={setOpenModal}
-      />
     </>
   );
 };
