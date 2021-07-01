@@ -71,14 +71,22 @@
   align-items: center;
   justify-content: space-around;
 }
-.form-materia-buttons button {
+.form-materia-buttons .btn-guardar,
+.form-materia-buttons .btn-modificar,
+.form-materia-buttons .btn-eliminar {
   border-radius: 10px;
   border: none;
   background: #084298;
   color: #fff;
   padding: 10px;
 }
-.form-materia-buttons button:hover {
+.form-materia-buttons .btn-guardar:hover,
+.form-materia-buttons .btn-modificar:hover,
+.form-materia-buttons .btn-eliminar:hover {
   background: #0d6efd;
   transition: 0.4s;
+}
+.form-materia-buttons .btn-guardar:disabled,
+.form-materia-buttons .btn-modificar:disabled {
+  background: #ccc;
 }

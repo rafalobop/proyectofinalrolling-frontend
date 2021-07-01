@@ -7,6 +7,7 @@
   width: 100%;
   margin: 0;
   background: #c1c1c1;
+  z-index: 20;
 }
 .home-container .img-container {
   width: 30%;

@@ -1,7 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../css/materia.css';
+import swal from 'sweetalert';
 const Materia = ({ materiaSeleccionada, setMateriaSeleccionada }) => {
   const { _id, nombreMateria, detalle, imagen } = materiaSeleccionada;
+  const [deshabilitarForm, setDeshabilitarForm] = useState(true);
+  const [deshabilitarButton, setDeshabilitarButton] = useState(true);
+
+  const enableForm = (e) => {
+    e.preventDefault();
+    if (deshabilitarForm) {
+      setDeshabilitarForm(false);
+      setDeshabilitarButton(false);
+    } else {
+      setDeshabilitarForm(true);
+      swal('Bien!!!', 'Has guardado los cambios', 'success');
+
+      setDeshabilitarButton(true);
+    }
+  };
+
+  const eliminarMateria = (e) => {
+    e.preventDefault();
+    swal({
+      title: `Eliminar ${nombreMateria}?`,
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal(`Materia: ${nombreMateria}, ha sido eliminada`, {
+          icon: 'success',
+        });
+      }
+    });
+  };
+
   return (
     <>
       <div className="materias-container">
@@ -23,9 +56,19 @@ const Materia = ({ materiaSeleccionada, setMateriaSeleccionada }) => {
         <div className="materias-bottom">
           <form action="" className="form-materia">
             <label>Nombre de materia</label>
-            <input type="text" name={nombreMateria} value={nombreMateria} />
+            <input
+              type="text"
+              name={nombreMateria}
+              disabled={deshabilitarForm}
+              value={nombreMateria}
+            />
             <label>Detalle</label>
-            <input type="text" name={detalle} value={detalle} />
+            <input
+              type="text"
+              name={detalle}
+              disabled={deshabilitarForm}
+              value={detalle}
+            />
             <label>Año</label>
             <div className="materias-options">
               <div className="materias-years">
@@ -34,6 +77,7 @@ const Materia = ({ materiaSeleccionada, setMateriaSeleccionada }) => {
                     className="form-check-input"
                     type="checkbox"
                     value=""
+                    disabled={deshabilitarForm}
                     id="years"
                   />
                   <label class="form-check-label" for="years">
@@ -44,6 +88,7 @@ const Materia = ({ materiaSeleccionada, setMateriaSeleccionada }) => {
                   <input
                     className="form-check-input"
                     type="checkbox"
+                    disabled={deshabilitarForm}
                     value=""
                     id="years"
                   />
@@ -55,6 +100,7 @@ const Materia = ({ materiaSeleccionada, setMateriaSeleccionada }) => {
                   <input
                     className="form-check-input"
                     type="checkbox"
+                    disabled={deshabilitarForm}
                     value=""
                     id="years"
                   />
@@ -66,6 +112,7 @@ const Materia = ({ materiaSeleccionada, setMateriaSeleccionada }) => {
                   <input
                     className="form-check-input"
                     type="checkbox"
+                    disabled={deshabilitarForm}
                     value=""
                     id="years"
                   />
@@ -75,9 +122,23 @@ const Materia = ({ materiaSeleccionada, setMateriaSeleccionada }) => {
                 </div>
               </div>
               <div className="form-materia-buttons">
-                <button className="btn-modificar">Modificar</button>
-                <button className="btn-guardar">Guardar</button>
-                <button className="btn-eliminar">Eliminar</button>
+                <button
+                  className="btn-modificar"
+                  onClick={enableForm}
+                  disabled={!deshabilitarButton}
+                >
+                  Modificar
+                </button>
+                <button
+                  className="btn-guardar"
+                  onClick={enableForm}
+                  disabled={deshabilitarButton}
+                >
+                  Guardar
+                </button>
+                <button className="btn-eliminar" onClick={eliminarMateria}>
+                  Eliminar
+                </button>
               </div>
             </div>
           </form>
