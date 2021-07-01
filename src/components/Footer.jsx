@@ -18,14 +18,16 @@ const Footer = () => {
   return (
     <>
       <div className="footer">
-        <div id="button"></div>
+        <span className="footer-btn" id="button">
+          0
+        </span>
         <div id="container">
           <div id="cont">
             <div className="footer_center">
-              <h3>Nuestro Equipo</h3>
+              <h3 className="footer-title">Nuestro Equipo</h3>
             </div>
             <div className="team_container">
-              <div className="cards_container">
+              <div className="cards_footer_container">
                 {integrantes.map((datos) => {
                   return <Card key={Math.random()} datos={datos} />;
                 })}

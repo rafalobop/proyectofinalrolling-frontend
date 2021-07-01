@@ -5,11 +5,9 @@
 }
 .home-container {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: #ccc;
+  margin: 0;
+  background: #c1c1c1;
+  z-index: 20;
 }
 .home-container .img-container {
   width: 30%;

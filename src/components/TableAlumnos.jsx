@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { getAlumnos, delAlumno, getAlumnoId } from '../helpers/rutaAlumnos';
-import { Table } from 'react-bootstrap';
-import ModalAlumno from './ModalAlumno';
+// import { Table } from 'react-bootstrap';
+// import ModalAlumno from './ModalAlumno';
 import '../css/tableAlumnos.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAddressCard, faTrash } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faAddressCard, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const TableAlumnos = () => {
   let id_alumno = '';
