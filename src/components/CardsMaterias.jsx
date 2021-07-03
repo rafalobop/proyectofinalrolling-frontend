@@ -1,41 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/cardsmaterias.css';
+import { Link } from 'react-router-dom';
 import Materia from './Materia';
-const CardsMaterias = ({ materias }) => {
-  const [materiaSeleccionada, setMateriaSeleccionada] = useState(null);
+import MateriaItem from './MateriaItem';
 
-  const verMateria = (materia) => {
-    const materiaSelec = materias.data.find((mat) => {
-      return mat._id === materia._id;
-    });
-    setMateriaSeleccionada(materiaSelec);
-  };
-
+const CardsMaterias = ({ data }) => {
   return (
     <>
-      {materiaSeleccionada ? (
-        <Materia
-          materiaSeleccionada={materiaSeleccionada}
-          setMateriaSeleccionada={setMateriaSeleccionada}
-        />
-      ) : (
-        <div className="cards_items_container">
-          {materias.data.map((materia) => (
-            <div
-              key={materia._id}
-              className="materias_card"
-              onClick={() => verMateria(materia)}
-            >
-              <div className="materias_card-header">
-                <img src={materia.imagen} alt={materia.nombreMateria} />
-              </div>
-              <div className="materias_card-text">
-                <p>{materia.nombreMateria}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+      {/* <MateriaItem
+        data={data}
+        materiaSeleccionada={materiaSeleccionada}
+        setMateriaSeleccionada={setMateriaSeleccionada}
+      /> */}
     </>
   );
 };

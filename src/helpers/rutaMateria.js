@@ -2,9 +2,8 @@ import axios from 'axios';
 import qs from 'qs';
 
 //Traer todos los cursos con el limite y desde que registro
-export const getMaterias = async (/*desde = 0, limite = 4*/) => {
-  const url = `http://localhost:3004/materias`; /*?desde=${desde}&limite=${limite}`*/
-
+export const getMaterias = async () => {
+  const url = `http://localhost:3004/materias`;
   const options = {
     method: 'GET',
     headers: {
@@ -26,17 +25,11 @@ export const getMateriaId = async (id) => {
       'content-type': 'application/x-www-form-urlencoded',
     },
   };
-  try {
-    const resp = await axios(url, options);
-    const { data } = resp;
-    console.log(data);
-    return data;
-  } catch (error) {
-    return {
-      data: error.response.data,
-      loading: false,
-    };
-  }
+
+  const resp = await axios(url, options);
+  const { data } = resp;
+  // console.log(data);
+  return data;
 };
 
 //Crear nuevo curso
