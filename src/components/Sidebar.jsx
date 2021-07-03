@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import { Link, useLocation, useHistory, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBook,
@@ -76,14 +76,14 @@ const Sidebar = () => {
         <div className={toggle ? 'list-container show' : 'list-container'}>
           <ul className="sidebar-list">
             <li className="list-item">
-              <Link to="/home">
+              <NavLink to="/home" exact activeClassName="active">
                 <div className="item-container">
                   <div className="item-icon">
                     <FontAwesomeIcon icon={faHome} />
                   </div>
                   <div className="item-link">Inicio</div>
                 </div>
-              </Link>
+              </NavLink>
             </li>
             <li className="list-item">
               <Link to="/materias">
