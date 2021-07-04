@@ -15,11 +15,8 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/home" component={Home} />
-<<<<<<< HEAD
           <Route exact path="/materias" component={Materias} />
-=======
           <Route component={Error404} />
->>>>>>> 1cdc1bd6de7d54da4d0c7d60e1f6d60a63fb1afe
         </Switch>
       </Router>
     </>
