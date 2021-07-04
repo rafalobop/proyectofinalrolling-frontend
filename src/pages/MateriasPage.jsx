@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../css/materiaspage.css';
 import { getMaterias } from '../helpers/rutaMateria';
 import Footer from '../components/Footer';
-import ListaMaterias from '../components/ListaMaterias';
+
 import Layout from '../components/Layout';
 import { Link } from 'react-router-dom';
 
