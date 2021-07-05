@@ -10,13 +10,10 @@ import { Row, Col } from 'react-bootstrap';
 const ModalFormAlumno = ({alumno, handleClose}) => {
   
   const [formValues, setFormValues] = useState({
+    expediente: alumno.expediente,
     nombreCompleto: alumno.nombreCompleto,
-    domicilio: alumno.domicilio,
-    contacto: alumno.contacto,
-    curso: alumno.curso,
-    fechaNacimiento: alumno.fechaNacimiento,
-    dni: alumno.dni,  
-    id: alumno.expediente,
+    año: alumno.año,
+    
   });
 
   const handleChange = (e) => {
@@ -28,6 +25,7 @@ const ModalFormAlumno = ({alumno, handleClose}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     modifAlumno(formValues, alumno._id).then((respuesta) => {
+      console.log(respuesta);
       handleClose();
     });
   };
@@ -48,26 +46,14 @@ const ModalFormAlumno = ({alumno, handleClose}) => {
             onChange={handleChange}
           />
         </div>
+        
         <div className="form-group">
-          <label>Domicilio</label>
+          <label>expediente</label>
           <input
             type="text"
             className="form-control"
-            name="domicilio"
-            required
-            value={formValues.domicilio}
-            onChange={handleChange}
-          />
-         
-        </div>
-        <div className="form-group">
-          <label>Contacto</label>
-          <input
-            type="text"
-            className="form-control"
-            name="contacto"
-            required
-            value={formValues.contacto}
+            name="expediente"
+            value={formValues.expediente}
             onChange={handleChange}
           />
          
@@ -77,43 +63,16 @@ const ModalFormAlumno = ({alumno, handleClose}) => {
           <input
             type="text"
             className="form-control"
-            name="curso"
+            name="año"
             required
-            value={formValues.curso}
+            value={formValues.año}
             onChange={handleChange}
           />
-         
         </div>
         
         </Col>
-        <Col xl={6} lg={6}>
-            <div>
-                
-            </div>
-
-           <div className="form-group">
-          <label>Fecha de nacimiento </label>
-          <input
-            type="text"
-            className="form-control"
-            name="fechaNacimiento"
-            required
-            value={formValues.fechaNacimiento}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>DNI</label>
-          <input
-            type="text"
-            className="form-control"
-            name="dni"
-            required
-            value={formValues.dni}
-            onChange={handleChange}
-          />
-        </div>
-        </Col>
+      
+  
       </Row>
    
       </Modal.Body>
