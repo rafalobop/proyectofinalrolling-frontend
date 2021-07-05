@@ -15,7 +15,6 @@ const Materia = () => {
       setMateria(datos.materia);
     });
   }, [id]);
-  // console.log(materia);
 
   return (
     <>

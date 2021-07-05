@@ -1,25 +1,62 @@
 import React, { useState, useEffect } from 'react';
-import { getMateriaId } from '../helpers/rutaMateria';
-
+import {
+  getMateriaId,
+  getMaterias,
+  modifMateria,
+} from '../helpers/rutaMateria';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import ModalMateria from './ModalMateria';
 const FormMateria = ({ materia }) => {
-  const [buttonEnabled, setButtonEnabled] = useState(true);
-  const [materiaSelec, setMateriaSelec] = useState({});
-  const [formValues, setFormValues] = useState({
-    nombreMateria: materia.nombreMateria,
-    imagen: materia.imagen,
-    detalle: materia.detalle,
-    // usuario: id,
-  });
-  let id_materia = '';
-
   const modificaMateria = (id) => {
     id_materia = id;
-
     getMateriaId(id_materia).then((resp) => {
-      console.log(resp);
-      // setCurso(resp);
+      setMateriaSeleccionada(resp);
+      handleShow();
     });
   };
+  const handleClose = () => {
+    setShow(false);
+  };
+
+  const handleShow = () => setShow(true);
+  const [materiaSeleccionada, setMateriaSeleccionada] = useState({});
+  const [show, setShow] = useState(false);
+
+  let id_materia = '';
+  // const handleChange = (e) => {};
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setButtonEnabled(true);
+    modifMateria(materia._id).then((respuesta) => {
+      console.log(respuesta);
+    });
+  };
+
+  const [buttonEnabled, setButtonEnabled] = useState(true);
+
+  const [materiaSelect, setMateriaSelect] = useState({});
+
+  // // console.log(formValues);
+  const [allMaterias, setAllMaterias] = useState({
+    data: {},
+    loading: true,
+  });
+
+  useEffect(() => {
+    consultaMaterias();
+  }, []);
+
+  const consultaMaterias = (desde) => {
+    getMaterias(desde).then((datos) => {
+      setAllMaterias({
+        data: datos,
+        loading: false,
+      });
+    });
+  };
+
   return (
     <>
       <div className="top">
@@ -33,29 +70,40 @@ const FormMateria = ({ materia }) => {
         </div>
       </div>
       <div className="bottom">
-        <div className="materia-form">
-          <form>
-            <label>Nombre</label>
-            <input type="text" disabled={buttonEnabled} />
-            <label>Detalle</label>
-            <input type="text" disabled={buttonEnabled} />
-          </form>
+        <div className="materia-data">
+          <p className="materia-detail">
+            <span className="materia-tag">Nombre: </span>
+            {materia.nombreMateria}
+          </p>
+          <p className="materia-detail">
+            <span className="materia-tag">Detalle: </span>
+            {materia.detalle}
+          </p>
+          <p className="materia-detail">
+            <span className="materia-tag">Años: </span>
+            1, 2, 3, 4
+          </p>
         </div>
-        <div className="materia-buttons">
+        <div className="materia-form-buttons">
           <button
-            className="btn-materia-form"
+            className="btn-modificar-materia"
             onClick={() => {
-              modificaMateria(id_materia);
+              modificaMateria(materia._id);
             }}
           >
-            Modificar
+            <FontAwesomeIcon icon={faEdit} />
           </button>
-          <button className="btn-materia-form" disabled={buttonEnabled}>
-            Guardar
+          <button className="btn-eliminar-materia">
+            <FontAwesomeIcon icon={faTrash} />
           </button>
-          <button className="btn-materia-form">Eliminar</button>
         </div>
       </div>
+      <ModalMateria
+        materiaSeleccionada={materiaSeleccionada}
+        show={show}
+        handleClose={handleClose}
+        // modificaMateria={modificaMateria}
+      />
     </>
   );
 };

@@ -76,9 +76,10 @@ export const modifMateria = async (datos, id) => {
   };
 
   const resp = await axios(url, options);
+  console.log(resp);
   const { data } = resp;
-  console.log(data);
-  // return data;
+  return data;
+  // console.log(data);
 };
 
 //Inactivar un curso

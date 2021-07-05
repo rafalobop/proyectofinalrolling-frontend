@@ -32,43 +32,63 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
+  margin-top: 30px;
 }
-.bottom .materia-form {
-  width: 100%;
-  padding: 10px;
-}
-.bottom .materia-form form {
+.bottom .materia-data {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-}
-
-.bottom .materia-form form input {
-  width: 100%;
-  margin-bottom: 20px;
-}
-.bottom .materia-buttons .btn-materia-form {
-  margin: 0px 10px;
-  border-radius: 20px;
-  border: none;
-  background: #084298;
-  color: #fff;
   padding: 10px;
-  margin-bottom: 20px;
 }
-.bottom .materia-buttons .btn-materia-form:disabled {
-  background: #ccc;
+.bottom .materia-data .materia-detail {
+  font-size: 16px;
+}
+.bottom .materia-data .materia-detail .materia-tag {
+  font-weight: 800;
+}
+.bottom .materia-form-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.bottom .materia-form-buttons .btn-modificar-materia,
+.bottom .materia-form-buttons .btn-eliminar-materia {
+  margin: 0px 10px;
+  background: none;
+  border: none;
+  padding: 10px;
+}
+.bottom .materia-form-buttons .btn-modificar-materia:hover,
+.bottom .materia-form-buttons .btn-eliminar-materia:hover {
+  transform: scale(1.2);
+  transition: 0.4s;
+}
+.bottom .materia-form-buttons .btn-modificar-materia:hover {
+  background: rgba(255, 252, 103, 0.918);
+
+  border-radius: 60px;
+}
+.bottom .materia-form-buttons .btn-eliminar-materia:hover {
+  background: rgba(255, 103, 103, 0.918);
+
+  border-radius: 60px;
 }
 
 @media screen and (min-width: 840px) {
   .top {
     flex-direction: row;
   }
-  .bottom .materia-form form {
+  .bottom .materia-data {
     align-items: flex-start;
+    justify-content: center;
+  }
+  .bottom .materia-data .materia-detail {
+    font-size: 20px;
+  }
+  .bottom .materia-data .materia-detail .materia-tag {
+    font-weight: 700;
   }
 }

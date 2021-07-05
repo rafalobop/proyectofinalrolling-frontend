@@ -86,6 +86,7 @@
 }
 .materias_card .materias_card-header img {
   width: 100%;
+  padding: 5px;
   color: #fff;
 }
 .materias_card .materias_card-text {
