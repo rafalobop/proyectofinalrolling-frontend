@@ -1,61 +1,61 @@
 import React, { useState, useEffect } from 'react';
-import {
-  getMateriaId,
-  getMaterias,
-  modifMateria,
-} from '../helpers/rutaMateria';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import ModalMateria from './ModalMateria';
+import { getMateriaId, getMaterias } from '../helpers/rutaMateria';
+
 const FormMateria = ({ materia }) => {
+  // console.log(materia);
+  let id_materia = '';
+  const handleShow = () => setShow(true);
+  const [materiaSeleccionada, setMateriaSeleccionada] = useState({});
+  const [seleccion, setSeleccion] = useState(false);
+  const [show, setShow] = useState(false);
+  // const [allMaterias, setAllMaterias] = useState({
+  //   data: {},
+  //   loading: true,
+  // });
+  // console.log(materiaSeleccionada);
+  // console.log();
+
   const modificaMateria = (id) => {
     id_materia = id;
     getMateriaId(id_materia).then((resp) => {
-      setMateriaSeleccionada(resp);
+      if (!seleccion) {
+        setSeleccion(false);
+        console.log(seleccion);
+      } else {
+        setSeleccion(true);
+        console.log(seleccion);
+      }
+      if (seleccion) {
+        setMateriaSeleccionada(null);
+        console.log(materiaSeleccionada, seleccion);
+      } else {
+        setMateriaSeleccionada(resp);
+        console.log(materiaSeleccionada, seleccion);
+      }
+
       handleShow();
     });
   };
   const handleClose = () => {
     setShow(false);
+    setSeleccion(false);
   };
 
-  const handleShow = () => setShow(true);
-  const [materiaSeleccionada, setMateriaSeleccionada] = useState({});
-  const [show, setShow] = useState(false);
+  // const consultaMaterias = () => {
+  //   getMaterias().then((datos) => {
+  //     setAllMaterias({
+  //       data: datos,
+  //       loading: false,
+  //     });
+  //   });
+  // };
 
-  let id_materia = '';
-  // const handleChange = (e) => {};
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setButtonEnabled(true);
-    modifMateria(materia._id).then((respuesta) => {
-      console.log(respuesta);
-    });
-  };
-
-  const [buttonEnabled, setButtonEnabled] = useState(true);
-
-  const [materiaSelect, setMateriaSelect] = useState({});
-
-  // // console.log(formValues);
-  const [allMaterias, setAllMaterias] = useState({
-    data: {},
-    loading: true,
-  });
-
-  useEffect(() => {
-    consultaMaterias();
-  }, []);
-
-  const consultaMaterias = (desde) => {
-    getMaterias(desde).then((datos) => {
-      setAllMaterias({
-        data: datos,
-        loading: false,
-      });
-    });
-  };
+  // useEffect(() => {
+  //   consultaMaterias();
+  // }, []);
 
   return (
     <>
@@ -99,10 +99,12 @@ const FormMateria = ({ materia }) => {
         </div>
       </div>
       <ModalMateria
-        materiaSeleccionada={materiaSeleccionada}
         show={show}
         handleClose={handleClose}
-        // modificaMateria={modificaMateria}
+        setSeleccion={setSeleccion}
+        seleccion={seleccion}
+        materiaSeleccionada={materiaSeleccionada}
+        setMateriaSeleccionada={setMateriaSeleccionada}
       />
     </>
   );
