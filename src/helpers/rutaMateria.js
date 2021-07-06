@@ -64,7 +64,7 @@ export const addMateria = async (datos) => {
 export const modifMateria = async (datos, id) => {
   // console.log(datos);
   // const token = JSON.parse(localStorage.getItem('token')) || '';
-  let url = `http://localhost:3004/cursos/${id}`;
+  let url = `http://localhost:3004/materias/${id}`;
 
   const options = {
     method: 'PUT',

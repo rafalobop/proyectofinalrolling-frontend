@@ -20,7 +20,7 @@ const Materia = () => {
     <>
       <Layout />
       <div className="home-container">
-        <FormMateria materia={materia} />
+        <FormMateria materia={materia} setMateria={setMateria} />
       </div>
     </>
   );

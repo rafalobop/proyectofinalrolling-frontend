@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Modal } from 'react-bootstrap';
 import FormModalMateria from './FormModalMateria';
 
 const ModalMateria = ({
   materiaSeleccionada,
   show,
+  setMateria,
+  materia,
   handleClose,
-  setMateriaSeleccionada,
   seleccion,
   setSeleccion,
 }) => {
@@ -20,10 +21,12 @@ const ModalMateria = ({
           <Modal.Title>Modificar Materia</Modal.Title>
         </Modal.Header>
         <FormModalMateria
+          materia={materia}
+          setMateria={setMateria}
           handleClose={handleClose}
           materiaSeleccionada={materiaSeleccionada}
           seleccion={seleccion}
-          setSeleccion={setSeleccion} /*materiaItem={materiaItem}*/
+          setSeleccion={setSeleccion}
         />
       </Modal>
     </>

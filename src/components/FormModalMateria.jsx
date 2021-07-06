@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { modifMateria } from '../helpers/rutaMateria';
+import { useParams } from 'react-router';
+const FormModalMateria = ({ materiaSeleccionada, handleClose, setMateria }) => {
+  const { id } = useParams();
 
-const FormModalMateria = ({
-  materiaSeleccionada,
-  handleClose,
-  seleccion,
-  setSeleccion,
-}) => {
   const { nombreMateria, detalle, imagen } = materiaSeleccionada.materia;
-
   const [formValues, setFormValues] = useState({
     nombreMateria,
     detalle,
     imagen,
   });
-
+  const [nuevaMateria, setNuevaMateria] = useState(false);
   const handleChange = (e) => {
     setFormValues({
       ...formValues,
@@ -25,24 +21,26 @@ const FormModalMateria = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // modifMateria(formValues, materia._id).then((respuesta) => {
-    //   console.log(respuesta);
-    // });
-    handleClose();
-    console.log('guardado');
+    if (nuevaMateria === false) {
+      modifMateria(formValues, id).then((respuesta) => {
+        setMateria(respuesta.materia);
+      });
+      setNuevaMateria(true);
+      handleClose();
+    }
   };
 
   return (
     <>
-      <Modal.Body>
-        <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
+        <Modal.Body>
           <div className="form-group">
             <label>Título</label>
             <input
-              type="text"
               className="form-control"
-              name="title"
+              rows="3"
               required
+              name="nombreMateria"
               value={formValues.nombreMateria}
               onChange={handleChange}
             />
@@ -50,8 +48,9 @@ const FormModalMateria = ({
           <div className="form-group">
             <label>Imagen</label>
             <input
-              type="text"
               className="form-control"
+              rows="3"
+              required
               name="imagen"
               value={formValues.imagen}
               onChange={handleChange}
@@ -69,13 +68,13 @@ const FormModalMateria = ({
               onChange={handleChange}
             ></textarea>
           </div>
-        </form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button type="submit" variant="outline-info">
-          Guardar
-        </Button>
-      </Modal.Footer>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button type="submit" variant="outline-info">
+            Guardar
+          </Button>
+        </Modal.Footer>
+      </form>
     </>
   );
 };

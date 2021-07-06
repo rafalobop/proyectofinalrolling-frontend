@@ -1,22 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import ModalMateria from './ModalMateria';
-import { getMateriaId, getMaterias } from '../helpers/rutaMateria';
+import { getMateriaId } from '../helpers/rutaMateria';
 
-const FormMateria = ({ materia }) => {
-  // console.log(materia);
+const FormMateria = ({ materia, setMateria }) => {
   let id_materia = '';
   const handleShow = () => setShow(true);
   const [materiaSeleccionada, setMateriaSeleccionada] = useState({});
   const [seleccion, setSeleccion] = useState(false);
   const [show, setShow] = useState(false);
-  // const [allMaterias, setAllMaterias] = useState({
-  //   data: {},
-  //   loading: true,
-  // });
-  // console.log(materiaSeleccionada);
-  // console.log();
 
   const modificaMateria = (id) => {
     id_materia = id;
@@ -43,19 +36,6 @@ const FormMateria = ({ materia }) => {
     setShow(false);
     setSeleccion(false);
   };
-
-  // const consultaMaterias = () => {
-  //   getMaterias().then((datos) => {
-  //     setAllMaterias({
-  //       data: datos,
-  //       loading: false,
-  //     });
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   consultaMaterias();
-  // }, []);
 
   return (
     <>
@@ -100,6 +80,8 @@ const FormMateria = ({ materia }) => {
       </div>
       <ModalMateria
         show={show}
+        setMateria={setMateria}
+        materia={materia}
         handleClose={handleClose}
         setSeleccion={setSeleccion}
         seleccion={seleccion}
