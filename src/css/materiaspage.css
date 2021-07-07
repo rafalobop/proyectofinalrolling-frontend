@@ -1,5 +1,14 @@
-.materias_container {
-  width: 65%;
+.add-button-container .add-materia-button {
+  border: none;
+  background: #0d6efd;
+  color: #fff;
+  padding: 10px;
+  border-radius: 30px;
+}
+.add-button-container .add-materia-button:hover {
+  background: #084298;
+  transition: 0.4s;
+  box-shadow: 2px 2px 4px #000, inset 2px 2px 4px #fff;
 }
 .cards_container {
   display: flex;
@@ -97,4 +106,15 @@
   font-weight: 700;
   color: #ccc;
   text-align: center;
+}
+.materias_card .btn-eliminar-materia {
+  margin-bottom: 5px;
+
+  border: none;
+  background: #0d6efd;
+}
+.materias_card .btn-eliminar-materia:hover {
+  transform: scale(1.1);
+  transition: 0.4s;
+  color: #084298;
 }

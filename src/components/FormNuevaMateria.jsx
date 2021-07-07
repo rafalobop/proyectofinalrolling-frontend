@@ -1,49 +1,56 @@
 import React, { useState } from 'react';
-import { Modal, Button } from 'react-bootstrap';
-import { modifMateria } from '../helpers/rutaMateria';
-import { useParams } from 'react-router';
+import { Button, ModalBody, ModalFooter } from 'reactstrap';
+import { addMateria, getMaterias } from '../helpers/rutaMateria';
 import swal from 'sweetalert';
-const FormModalMateria = ({ materiaSeleccionada, handleClose, setMateria }) => {
-  const { id } = useParams();
 
-  const { nombreMateria, detalle, imagen } = materiaSeleccionada.materia;
+const FormNuevaMateria = ({ toggle, setMaterias }) => {
   const [formValues, setFormValues] = useState({
-    nombreMateria,
-    detalle,
-    imagen,
+    nombreMateria: '',
+    imagen: '',
+    detalle: '',
   });
-  const [nuevaMateria, setNuevaMateria] = useState(false);
   const handleChange = (e) => {
     setFormValues({
       ...formValues,
       [e.target.name]: e.target.value,
     });
   };
+  const consultarMaterias = () => {
+    getMaterias().then((materia) => {
+      setMaterias({
+        data: materia,
+        loading: false,
+      });
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (nuevaMateria === false) {
-      modifMateria(formValues, id).then((respuesta) => {
-        setMateria(respuesta.materia);
+    addMateria(formValues).then((resp) => {
+      console.log(resp);
+
+      setFormValues({
+        nombreMateria: '',
+        detalle: '',
+        imagen: '',
       });
-      setNuevaMateria(true);
-      swal('Listo!', 'Cambios guardados', 'success');
+      swal('Materia Agregada', 'Actualiza para ver los cambios', 'success');
+      consultarMaterias();
 
-      handleClose();
-    }
+      toggle();
+    });
   };
-
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <Modal.Body>
+      <ModalBody>
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Título</label>
             <input
+              type="text"
               className="form-control"
-              rows="3"
-              required
               name="nombreMateria"
+              required
               value={formValues.nombreMateria}
               onChange={handleChange}
             />
@@ -51,9 +58,8 @@ const FormModalMateria = ({ materiaSeleccionada, handleClose, setMateria }) => {
           <div className="form-group">
             <label>Imagen</label>
             <input
+              type="text"
               className="form-control"
-              rows="3"
-              required
               name="imagen"
               value={formValues.imagen}
               onChange={handleChange}
@@ -71,15 +77,20 @@ const FormModalMateria = ({ materiaSeleccionada, handleClose, setMateria }) => {
               onChange={handleChange}
             ></textarea>
           </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button type="submit" variant="outline-info">
-            Guardar
-          </Button>
-        </Modal.Footer>
-      </form>
+          <div>
+            <button type="submit" className="btn btn-outline-info">
+              Guardar
+            </button>
+          </div>
+        </form>
+      </ModalBody>
+      <ModalFooter>
+        <Button color="primary" onClick={toggle}>
+          Cerrar
+        </Button>
+      </ModalFooter>
     </>
   );
 };
 
-export default FormModalMateria;
+export default FormNuevaMateria;

@@ -11,9 +11,6 @@ const ModalMateria = ({
   seleccion,
   setSeleccion,
 }) => {
-  console.log(`materiaSeleccionada`, materiaSeleccionada);
-  console.log(`seleccion`, seleccion);
-
   return (
     <>
       <Modal show={show} onHide={handleClose}>

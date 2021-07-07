@@ -16,17 +16,13 @@ const FormMateria = ({ materia, setMateria }) => {
     getMateriaId(id_materia).then((resp) => {
       if (!seleccion) {
         setSeleccion(false);
-        console.log(seleccion);
       } else {
         setSeleccion(true);
-        console.log(seleccion);
       }
       if (seleccion) {
         setMateriaSeleccionada(null);
-        console.log(materiaSeleccionada, seleccion);
       } else {
         setMateriaSeleccionada(resp);
-        console.log(materiaSeleccionada, seleccion);
       }
 
       handleShow();
@@ -72,9 +68,6 @@ const FormMateria = ({ materia, setMateria }) => {
             }}
           >
             <FontAwesomeIcon icon={faEdit} />
-          </button>
-          <button className="btn-eliminar-materia">
-            <FontAwesomeIcon icon={faTrash} />
           </button>
         </div>
       </div>
