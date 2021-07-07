@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { addAlumno } from "../helpers/rutaAlumnos";
+import React, { useState } from 'react';
+import { addAlumno } from '../helpers/rutaAlumnos';
 
 const AddAlumnoForm = ({ setShow }) => {
-  const id = JSON.parse(localStorage.getItem("Id"));
+  // const id = JSON.parse(localStorage.getItem("Id"));
   const [formValues, setFormValues] = useState({
-    nombreCompleto: "",
-    domicilio: "",
-    contacto: "",
-    fechaNacimiento: "",
-    dni: "",
-    alumno: id,
+    nombreCompleto: '',
+    domicilio: '',
+    contacto: '',
+    fechaNacimiento: '',
+    dni: '',
+    // alumno: id,
   });
 
   const handleChange = (e) => {
@@ -25,12 +25,12 @@ const AddAlumnoForm = ({ setShow }) => {
       //console.log(resp);
 
       setFormValues({
-        nombreCompleto: "",
-        domicilio: "",
-        contacto: "",
-        curso: "",
-        fechaNacimiento: "",
-        dni: "",
+        nombreCompleto: '',
+        domicilio: '',
+        contacto: '',
+        curso: '',
+        fechaNacimiento: '',
+        dni: '',
       });
 
       setShow(false);

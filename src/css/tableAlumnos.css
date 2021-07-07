@@ -1,7 +1,19 @@
-.color-titulo h1{
-    color: #084298;
+.color-titulo h1 {
+  color: #084298;
+}
+.tabla .table-bordered th,
+.tabla .table-bordered td {
+  border: none;
 }
 
-.tabla th{
-    color: #084298;
+.tabla th {
+  color: #084298;
+  border: none;
+}
+.tabla td {
+  border: none;
+}
+.tabla tbody tr td .link-alumno {
+  border: none;
+  font-size: 20px;
 }

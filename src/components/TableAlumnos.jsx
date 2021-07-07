@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getAlumnos, delAlumno, getAlumnoId } from '../helpers/rutaAlumnos';
-// import { Table } from 'react-bootstrap';
-// import ModalAlumno from './ModalAlumno';
+import { Table } from 'react-bootstrap';
+import ModalAlumno from './ModalAlumno';
 import '../css/tableAlumnos.css';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faAddressCard, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import swal from 'sweetalert';
 
 const TableAlumnos = () => {
   let id_alumno = '';
@@ -27,22 +29,25 @@ const TableAlumnos = () => {
         data: datos,
         loading: false,
       });
-      console.log(datos);
+      // console.log(`alumns`, alumnos.data.alumno);
     });
   };
 
   const handleClose = () => {
     setShow(false);
+    swal('Listo!', 'Alumno modificado', 'success');
     consultaAlumnos();
   };
 
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setShow(true);
+  };
 
   const modificaAlumno = (id) => {
     id_alumno = id;
 
     getAlumnoId(id_alumno).then((resp) => {
-      console.log(resp);
+      // console.log(resp);
       setAlumno(resp);
 
       handleShow();
@@ -56,12 +61,12 @@ const TableAlumnos = () => {
         consultaAlumnos();
       });
     }
+    swal('Listo!', 'Alumno eliminado', 'warning');
   };
-
+  // console.log(alumnos.data.alumno);
   return (
     <>
-      <h1>Tabla</h1>
-      {/* <div className="container mt-5">
+      <div className="container mt-5">
         {!alumnos.loading && (
           <div className="row">
             <div className="col-12 mt-4">
@@ -75,15 +80,20 @@ const TableAlumnos = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {alumnos.data.alumnos.map((alumno) => (
+                  {alumnos.data.alumno.map((alumno) => (
                     <tr key={alumno._id}>
-                      <td>{alumno.alumno.expediente}</td>
-                      <td>{alumno.nombreCompleto}</td>
-                      <td>{alumno.curso}</td>
+                      <td>{alumno.expediente}</td>
+                      <Link
+                        to={`/alumnos/${alumno._id}`}
+                        className="link-alumno"
+                      >
+                        <td>{alumno.nombreCompleto}</td>
+                      </Link>
+                      <td>{alumno.year}</td>
                       <td>
                         <button className="btn btn-outline-dark mr-2">
                           <FontAwesomeIcon
-                            icon={faAddressCard}
+                            icon={faEdit}
                             onClick={() => {
                               modificaAlumno(alumno._id);
                             }}
@@ -111,8 +121,8 @@ const TableAlumnos = () => {
           show={show}
           handleClose={handleClose}
           alumno={alumno.alumno}
-        /> */}
-      {/* </div> */}
+        />
+      </div>
     </>
   );
 };

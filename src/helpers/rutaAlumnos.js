@@ -10,17 +10,11 @@ export const getAlumnos = async (desde = 0, limite = 10) => {
       'content-type': 'application/x-www-form-urlencoded',
     },
   };
-  try {
-    const resp = await axios(url, options);
-    console.log(`resp`, resp);
-    // const { data } = resp;
-    // return data;
-  } catch (error) {
-    return {
-      data: error.response.data,
-      loading: false,
-    };
-  }
+
+  const resp = await axios(url, options);
+  console.log(`resp`, resp);
+  const { data } = resp;
+  return data;
 };
 
 export const getAlumnoId = async (id) => {

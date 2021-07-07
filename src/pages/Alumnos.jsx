@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import TableAlumnos from '../components/TableAlumnos';
 import AddAlumno from '../components/AddAlumno';
-import NavBar from '../components/NavBar';
-import Sidebar from '../components/Sidebar';
+import Layout from '../components/Layout';
 import '../css/alumnos.css';
 const Alumnos = () => {
   const [show, setShow] = useState(false);
 
   return (
     <>
-      <NavBar />
-      <Sidebar />
+      <Layout />
       <div className="home-container">
         <div className="row">
           <div className="col color-titulo">
