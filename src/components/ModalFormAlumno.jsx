@@ -9,6 +9,7 @@ import { Row, Col } from 'react-bootstrap';
 
 const ModalFormAlumno = ({alumno, handleClose}) => {
   
+  
   const [formValues, setFormValues] = useState({
     expediente: alumno.expediente,
     nombreCompleto: alumno.nombreCompleto,

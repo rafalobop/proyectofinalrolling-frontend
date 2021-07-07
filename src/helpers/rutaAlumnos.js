@@ -1,6 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 
+let token = JSON.parse(localStorage.getItem("token"));
 //Traer todos los alumnos con el limite y desde que registro
 export const getAlumnos = async (desde = 0, limite = 10) => {
   let url = `http://localhost:3004/alumnos?desde=${desde}&limite=${limite}`;
@@ -9,6 +10,7 @@ export const getAlumnos = async (desde = 0, limite = 10) => {
     method: "GET",
     headers: {
       "content-type": "application/x-www-form-urlencoded",
+      token: token,
     },
   };
   try {
@@ -120,7 +122,7 @@ export const delAlumno = async (id) => {
     console.log(data);
     return data;
   } catch (error) {
-   console.log(error.response.data);
+    console.log(error.response.data);
     return {
       data: error.response.data,
       loading: false,
