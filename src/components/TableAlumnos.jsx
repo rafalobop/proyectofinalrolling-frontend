@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { getAlumnos, delAlumno, getAlumnoId } from '../helpers/rutaAlumnos';
+import React, { useState } from 'react';
+import { delAlumno, getAlumnoId } from '../helpers/rutaAlumnos';
 import { Table } from 'react-bootstrap';
 import ModalAlumno from './ModalAlumno';
 import '../css/tableAlumnos.css';
@@ -8,30 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import swal from 'sweetalert';
 
-const TableAlumnos = () => {
+const TableAlumnos = ({ alumnos, setAlumnos, consultaAlumnos }) => {
+  console.log(alumnos.data);
   let id_alumno = '';
-
-  const [alumnos, setAlumnos] = useState({
-    data: {},
-    loading: true,
-  });
 
   const [alumno, setAlumno] = useState({});
   const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    consultaAlumnos();
-  }, []);
-
-  const consultaAlumnos = (desde) => {
-    getAlumnos(desde).then((datos) => {
-      setAlumnos({
-        data: datos,
-        loading: false,
-      });
-      // console.log(`alumns`, alumnos.data.alumno);
-    });
-  };
 
   const handleClose = () => {
     setShow(false);
@@ -47,7 +29,6 @@ const TableAlumnos = () => {
     id_alumno = id;
 
     getAlumnoId(id_alumno).then((resp) => {
-      // console.log(resp);
       setAlumno(resp);
 
       handleShow();
@@ -63,7 +44,6 @@ const TableAlumnos = () => {
     }
     swal('Listo!', 'Alumno eliminado', 'warning');
   };
-  // console.log(alumnos.data.alumno);
   return (
     <>
       <div className="container mt-5">
@@ -77,19 +57,26 @@ const TableAlumnos = () => {
                     <th>Nombre y Apellido</th>
                     <th>Curso</th>
                     <th>Cuota</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  {alumnos.data.alumno.map((alumno) => (
+                  {alumnos.data.map((alumno) => (
                     <tr key={alumno._id}>
                       <td>{alumno.expediente}</td>
-                      <Link
-                        to={`/alumnos/${alumno._id}`}
-                        className="link-alumno"
-                      >
-                        <td>{alumno.nombreCompleto}</td>
-                      </Link>
+                      <td>
+                        <Link
+                          to={`/alumnos/${alumno._id}`}
+                          className="link-alumno"
+                        >
+                          {alumno.nombreCompleto}
+                        </Link>
+                      </td>
                       <td>{alumno.year}</td>
+                      <td>
+                        {alumno.cuota}
+                        {alumno.cuota ? 'al dia' : 'debe'}
+                      </td>
                       <td>
                         <button className="btn btn-outline-dark mr-2">
                           <FontAwesomeIcon
@@ -100,7 +87,6 @@ const TableAlumnos = () => {
                           />
                         </button>
                         <button className="btn btn-outline-dark">
-                          {' '}
                           <FontAwesomeIcon
                             icon={faTrash}
                             onClick={() => {
@@ -120,7 +106,8 @@ const TableAlumnos = () => {
         <ModalAlumno
           show={show}
           handleClose={handleClose}
-          alumno={alumno.alumno}
+          alumno={alumno}
+          consultaAlumnos={consultaAlumnos}
         />
       </div>
     </>

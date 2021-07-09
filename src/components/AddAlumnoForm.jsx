@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { addAlumno } from '../helpers/rutaAlumnos';
 
-const AddAlumnoForm = ({ setShow }) => {
+const AddAlumnoForm = ({ setShow, setAlumnos, alumnos }) => {
+  // console.log(data);
   // const id = JSON.parse(localStorage.getItem("Id"));
   const [formValues, setFormValues] = useState({
     nombreCompleto: '',
     domicilio: '',
     contacto: '',
-    fechaNacimiento: '',
-    dni: '',
+    year: '',
+    expediente: '',
+    cuota: '',
     // alumno: id,
   });
 
@@ -17,22 +19,26 @@ const AddAlumnoForm = ({ setShow }) => {
       ...formValues,
       [e.target.name]: e.target.value,
     });
+    // console.log(formValues);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addAlumno(formValues).then((resp) => {
-      //console.log(resp);
+      console.log(resp);
 
       setFormValues({
         nombreCompleto: '',
         domicilio: '',
         contacto: '',
-        curso: '',
-        fechaNacimiento: '',
-        dni: '',
+        year: '',
+        expediente: '',
+        cuota: '',
       });
-
+      // setAlumnos({
+      //   ...alumnos,
+      //   formValues,
+      // });
       setShow(false);
     });
   };
@@ -76,32 +82,32 @@ const AddAlumnoForm = ({ setShow }) => {
         <input
           type="text"
           className="form-control"
-          name="curso"
-          value={formValues.curso}
+          name="year"
+          value={formValues.year}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="form-group">
+        <label>Expediente</label>
+        <input
+          type="text"
+          className="form-control"
+          name="expediente"
+          value={formValues.expediente}
           onChange={handleChange}
         />
       </div>
       <div className="form-group">
-        <label>Fecha de Nacimiento</label>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="22/06/2021"
-          name="fechaNacimiento"
-          required
-          value={formValues.fechaNacimiento}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="form-group">
-        <label>DNI</label>
-        <input
-          type="text"
-          className="form-control"
-          name="dni"
-          value={formValues.dni}
-          onChange={handleChange}
-        />
+        <label>Cuota</label>
+        <select name="cuota">
+          <option value={formValues.cuota} onChange={handleChange}>
+            Pago
+          </option>
+          <option value={formValues.cuota} onChange={handleChange}>
+            Adeuda
+          </option>
+        </select>
       </div>
       <div>
         <button type="submit" className="btn btn-outline-info">
