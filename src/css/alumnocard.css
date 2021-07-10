@@ -1,0 +1,45 @@
+.card-alumno-container,
+.materias-cursadas {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 20px;
+}
+.card-alumno-container .card-alumno-title {
+  color: #084298;
+}
+.card-alumno-container .alumno-item {
+  font-size: 17px;
+  text-transform: capitalize;
+}
+.card-alumno-container .alumno-item .alumno-tag {
+  font-weight: 700;
+}
+.badge {
+  cursor: pointer;
+}
+.calificaciones-materias {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 840px) {
+  .card-alumno-container,
+  .materias-cursadas {
+    width: 95%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 20px;
+  }
+  .calificaciones-materias {
+    width: 95%;
+  }
+}

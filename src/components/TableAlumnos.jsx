@@ -25,6 +25,8 @@ const TableAlumnos = ({ alumnos, setAlumnos, consultaAlumnos }) => {
     setShow(true);
   };
 
+  const verDatosAlumno = () => {};
+
   const modificaAlumno = (id) => {
     id_alumno = id;
 
