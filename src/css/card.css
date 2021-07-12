@@ -1,16 +1,13 @@
-.cards_container {
-  width: 100%;
-}
-.card {
+.footer_card {
   position: relative;
   width: 260px;
   margin: 10px auto;
   height: 320px;
   border: 1px solid #000;
-  border-radius: 20px;
+  border-radius: 40px;
   cursor: pointer;
 }
-.card .face {
+.footer_card .face {
   position: absolute;
   padding: 10px;
   border-radius: 40px;
@@ -25,24 +22,24 @@
   transition: 0.6s ease-in-out;
   transform: perspective(500px) rotateY(0deg);
 }
-.card.face.front {
+.footer_card .face.front {
   background: #fff;
-  padding: 30px;
+  padding: 10px;
 }
-.card:hover .face.front {
+.footer_card:hover .face.front {
   transform: perspective(500px) rotateY(180deg);
 }
-.card .face .back {
+.footer_card .face .back {
   width: 100%;
   color: #000;
   background: url('https://i.pinimg.com/originals/90/72/80/907280526f902884ceae47fffefb8289.jpg')
     no-repeat;
   transform: perspective(500px) rotateY(180deg);
 }
-.card:hover .face.back {
+.footer_card:hover .face.back {
   transform: perspective(500px) rotateY(360deg);
 }
-.card .face .card-back-container {
+.footer_card .face .card-back-container {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -52,29 +49,29 @@
   align-items: center;
   border-radius: 10px;
 }
-.card .face .card-back-container .technologies {
+.footer_card .face .card-back-container .technologies {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.card .face .card-back-container .technologies .tech {
+.footer_card .face .card-back-container .technologies .tech {
   width: 25%;
   height: 70px;
   padding: 5px;
 }
-.card .face .card-back-container .technologies .tech:nth-child(3),
-.card .face .card-back-container .technologies .tech:nth-child(4) {
+.footer_card .face .card-back-container .technologies .tech:nth-child(3),
+.footer_card .face .card-back-container .technologies .tech:nth-child(4) {
   width: 20%;
   margin-top: 6px;
   margin-left: 9px;
 }
 
-.card .face .card-back-container .technologies .tech img {
+.footer_card .face .card-back-container .technologies .tech img {
   width: 100%;
   padding: 3px;
 }
-.card .face .card-back-container .technologies .tech img:hover {
+.footer_card .face .card-back-container .technologies .tech img:hover {
   transform: scale(1.4);
   transition: 0.4s;
 }
@@ -105,9 +102,10 @@
   margin: 0px auto;
 }
 .card-body .img-container {
-  height: 300px;
+  height: 200px;
 }
-.card-body img {
+
+.card-body .img-container img {
   z-index: 0;
   overflow: hidden;
   height: 200px;
@@ -115,6 +113,7 @@
   margin: 0;
   border-radius: 20px;
 }
+
 .card-footer {
   width: 92%;
   display: flex;

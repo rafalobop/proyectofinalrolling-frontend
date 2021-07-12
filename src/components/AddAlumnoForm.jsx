@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import { addAlumno } from "../helpers/rutaAlumnos";
+import React, { useState } from 'react';
+import { addAlumno } from '../helpers/rutaAlumnos';
 
-const AddAlumnoForm = ({ setShow }) => {
+const AddAlumnoForm = ({ setShow, setAlumnos, alumnos }) => {
+  // console.log(data);
+  // const id = JSON.parse(localStorage.getItem("Id"));
   const [formValues, setFormValues] = useState({
-    expediente:"",
-    nombreCompleto: "",
-    año: "",
-    
+    nombreCompleto: '',
+    domicilio: '',
+    contacto: '',
+    year: '',
+    expediente: '',
+    cuota: '',
+    // alumno: id,
   });
 
   const handleChange = (e) => {
@@ -14,6 +19,7 @@ const AddAlumnoForm = ({ setShow }) => {
       ...formValues,
       [e.target.name]: e.target.value,
     });
+    // console.log(formValues);
   };
 
   const handleSubmit = (e) => {
@@ -22,12 +28,17 @@ const AddAlumnoForm = ({ setShow }) => {
       console.log(resp);
 
       setFormValues({
-        expediente:"",
-        nombreCompleto: "",
-        año: "",
-        
+        nombreCompleto: '',
+        domicilio: '',
+        contacto: '',
+        year: '',
+        expediente: '',
+        cuota: '',
       });
-
+      // setAlumnos({
+      //   ...alumnos,
+      //   formValues,
+      // });
       setShow(false);
     });
   };
@@ -52,22 +63,32 @@ const AddAlumnoForm = ({ setShow }) => {
         <input
           type="text"
           className="form-control"
-          name="año"
-          value={formValues.año}
+          name="year"
+          value={formValues.year}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="form-group">
+        <label>Expediente</label>
+        <input
+          type="text"
+          className="form-control"
+          name="expediente"
+          value={formValues.expediente}
           onChange={handleChange}
         />
       </div>
       <div className="form-group">
-        <label>expediente</label>
-        <input
-          type="text"
-          className="form-control"
-         
-          name="expediente"
-          required
-          value={formValues.expediente}
-          onChange={handleChange}
-        />
+        <label>Cuota</label>
+        <select name="cuota">
+          <option value={formValues.cuota} onChange={handleChange}>
+            Pago
+          </option>
+          <option value={formValues.cuota} onChange={handleChange}>
+            Adeuda
+          </option>
+        </select>
       </div>
       
       <div>

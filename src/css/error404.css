@@ -11,10 +11,10 @@ h1 {
   font-size: 60px !important;
 }
 
-button {
+.gohome {
   background-color: #084298 !important;
 }
 
-button:hover {
+.gohome:hover {
   background-color: #0d6efd !important;
 }

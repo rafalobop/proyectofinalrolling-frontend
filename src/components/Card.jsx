@@ -11,7 +11,7 @@ import node from '../images/node.png';
 const Card = ({ datos }) => {
   return (
     <>
-      <div className="card" key={datos.id}>
+      <div className="footer_card" key={datos.id}>
         <div className="face back">
           <div className="card-back-container">
             <div className="technologies">

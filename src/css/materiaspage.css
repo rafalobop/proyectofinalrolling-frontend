@@ -1,0 +1,120 @@
+.add-button-container .add-materia-button {
+  border: none;
+  background: #0d6efd;
+  color: #fff;
+  padding: 10px;
+  border-radius: 30px;
+}
+.add-button-container .add-materia-button:hover {
+  background: #084298;
+  transition: 0.4s;
+  box-shadow: 2px 2px 4px #000, inset 2px 2px 4px #fff;
+}
+.cards_container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.cards_items_container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 10px 0;
+  background: #c1c1c1;
+  align-items: center;
+  justify-content: center;
+}
+.materias_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0d6efd;
+  width: 200px;
+  height: 220px;
+  margin: 15px;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 2px 2px 6px #888;
+  cursor: pointer;
+}
+.materias_card:hover {
+  box-shadow: 2px 2px 6px #000, inset 4px 4px 6px #ccc;
+  transition: 0.2s ease-in-out;
+}
+.materias_card .materias_card-header {
+  width: 100%;
+}
+.materias_card .materias_card-header img {
+  width: 100%;
+  color: #fff;
+}
+.materias_card .materias_card-text {
+  margin-top: 10px;
+}
+.materias_card .materias_card-text p {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ccc;
+  text-align: center;
+}
+.cards_items_container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 10px 0;
+  background: #c1c1c1;
+  align-items: center;
+  justify-content: center;
+}
+.materias_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0d6efd;
+  width: 200px;
+  height: 220px;
+  margin: 15px;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 2px 2px 6px #888;
+  cursor: pointer;
+}
+.materias_card:hover {
+  box-shadow: 2px 2px 6px #000, inset 4px 4px 6px #ccc;
+  transition: 0.2s ease-in-out;
+}
+.materias_card .materias_card-header {
+  width: 100%;
+}
+.materias_card .materias_card-header img {
+  width: 100%;
+  padding: 5px;
+  color: #fff;
+}
+.materias_card .materias_card-text {
+  margin-top: 10px;
+}
+.materias_card .materias_card-text p {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ccc;
+  text-align: center;
+}
+.materias_card .btn-eliminar-materia {
+  margin-bottom: 5px;
+
+  border: none;
+  background: #0d6efd;
+}
+.materias_card .btn-eliminar-materia:hover {
+  transform: scale(1.1);
+  transition: 0.4s;
+  color: #084298;
+}
