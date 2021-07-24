@@ -1,48 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { getAlumnos, delAlumno, getAlumnoId } from '../helpers/rutaAlumnos';
-// import { Table } from 'react-bootstrap';
-// import ModalAlumno from './ModalAlumno';
+import React, { useState } from 'react';
+import { delAlumno, getAlumnoId } from '../helpers/rutaAlumnos';
+import { Table } from 'react-bootstrap';
+import ModalAlumno from './ModalAlumno';
 import '../css/tableAlumnos.css';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faAddressCard, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import swal from 'sweetalert';
 
-const TableAlumnos = () => {
+const TableAlumnos = ({ alumnos, setAlumnos, consultaAlumnos }) => {
+  console.log(alumnos.data);
   let id_alumno = '';
-
-  const [alumnos, setAlumnos] = useState({
-    data: {},
-    loading: true,
-  });
 
   const [alumno, setAlumno] = useState({});
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    consultaAlumnos();
-  }, []);
-
-  const consultaAlumnos = (desde) => {
-    getAlumnos(desde).then((datos) => {
-      setAlumnos({
-        data: datos,
-        loading: false,
-      });
-      console.log(datos);
-    });
-  };
-
   const handleClose = () => {
     setShow(false);
+    swal('Listo!', 'Alumno modificado', 'success');
     consultaAlumnos();
   };
 
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setShow(true);
+  };
 
   const modificaAlumno = (id) => {
     id_alumno = id;
 
     getAlumnoId(id_alumno).then((resp) => {
-      console.log(resp);
       setAlumno(resp);
 
       handleShow();
@@ -56,12 +42,11 @@ const TableAlumnos = () => {
         consultaAlumnos();
       });
     }
+    swal('Listo!', 'Alumno eliminado', 'warning');
   };
-
   return (
     <>
-      <h1>Tabla</h1>
-      {/* <div className="container mt-5">
+      <div className="container mt-5">
         {!alumnos.loading && (
           <div className="row">
             <div className="col-12 mt-4">
@@ -72,25 +57,36 @@ const TableAlumnos = () => {
                     <th>Nombre y Apellido</th>
                     <th>Curso</th>
                     <th>Cuota</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  {alumnos.data.alumnos.map((alumno) => (
+                  {alumnos.data.map((alumno) => (
                     <tr key={alumno._id}>
-                      <td>{alumno.alumno.expediente}</td>
-                      <td>{alumno.nombreCompleto}</td>
-                      <td>{alumno.curso}</td>
+                      <td>{alumno.expediente}</td>
+                      <td>
+                        <Link
+                          to={`/alumnos/${alumno._id}`}
+                          className="link-alumno"
+                        >
+                          {alumno.nombreCompleto}
+                        </Link>
+                      </td>
+                      <td>{alumno.year}</td>
+                      <td>
+                        {alumno.cuota}
+                        {alumno.cuota ? 'al dia' : 'debe'}
+                      </td>
                       <td>
                         <button className="btn btn-outline-dark mr-2">
                           <FontAwesomeIcon
-                            icon={faAddressCard}
+                            icon={faEdit}
                             onClick={() => {
                               modificaAlumno(alumno._id);
                             }}
                           />
                         </button>
                         <button className="btn btn-outline-dark">
-                          {' '}
                           <FontAwesomeIcon
                             icon={faTrash}
                             onClick={() => {
@@ -110,9 +106,10 @@ const TableAlumnos = () => {
         <ModalAlumno
           show={show}
           handleClose={handleClose}
-          alumno={alumno.alumno}
-        /> */}
-      {/* </div> */}
+          alumno={alumno}
+          consultaAlumnos={consultaAlumnos}
+        />
+      </div>
     </>
   );
 };
