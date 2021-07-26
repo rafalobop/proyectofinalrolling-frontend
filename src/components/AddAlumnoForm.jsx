@@ -56,8 +56,27 @@ const AddAlumnoForm = ({ setShow, setAlumnos, alumnos }) => {
           onChange={handleChange}
         />
       </div>
-      
-    
+      <div className="form-group">
+        <label>Domicilio</label>
+        <input
+          type="text"
+          className="form-control"
+          name="domicilio"
+          value={formValues.domicilio}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="form-group">
+        <label>Contacto</label>
+        <input
+          className="form-control"
+          type="text"
+          required
+          name="contacto"
+          value={formValues.contacto}
+          onChange={handleChange}
+        />
+      </div>
       <div className="form-group">
         <label>Curso</label>
         <input
@@ -90,7 +109,6 @@ const AddAlumnoForm = ({ setShow, setAlumnos, alumnos }) => {
           </option>
         </select>
       </div>
-      
       <div>
         <button type="submit" className="btn btn-outline-info">
           Guardar

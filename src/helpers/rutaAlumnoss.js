@@ -1,8 +1,8 @@
 import axios from 'axios';
 import qs from 'qs';
 
-export const getAlumnos = async () => {
-  let url = `http://localhost:3004/alumnos`;
+export const getMaterias = async () => {
+  let url = `http://localhost:3004/materias`;
 
   const options = {
     method: 'GET',
@@ -12,14 +12,14 @@ export const getAlumnos = async () => {
   };
 
   const resp = await axios(url, options);
-  const { alumno } = resp.data;
-  // const { data } = resp.data.alumno;
-  // console.log(alumno);
-  return alumno;
+  const { materia } = resp.data;
+  // const { data } = resp.data.materia;
+  // console.log(materia);
+  return materia;
 };
 
-export const getAlumnoId = async (id) => {
-  let url = `http://localhost:3004/alumnos/${id}`;
+export const getMateriaId = async (id) => {
+  let url = `http://localhost:3004/materias/${id}`;
   const options = {
     method: 'GET',
     headers: {
@@ -33,11 +33,11 @@ export const getAlumnoId = async (id) => {
   return data;
 };
 
-//Crear nuevo alumno
-export const addAlumno = async (datos) => {
+//Crear nuevo materia
+export const AddMateria = async (datos) => {
   // console.log(datos);
   // const token = JSON.parse(localStorage.getItem('token')) || '';
-  let url = 'http://localhost:3004/alumnos';
+  let url = 'http://localhost:3004/materias';
 
   const options = {
     method: 'POST',
@@ -54,11 +54,11 @@ export const addAlumno = async (datos) => {
   return data;
 };
 
-//Actualizar alumno
-export const modifAlumno = async (datos, id) => {
+//Actualizar materia
+export const modifMateria = async (datos, id) => {
   // console.log(datos);
   // const token = JSON.parse(localStorage.getItem('token')) || '';
-  let url = `http://localhost:3004/alumnos/${id}`;
+  let url = `http://localhost:3004/materias/${id}`;
 
   const options = {
     method: 'PUT',
@@ -75,10 +75,10 @@ export const modifAlumno = async (datos, id) => {
   return data;
 };
 
-//Inactivar un alumno
-export const delAlumno = async (id) => {
+//Inactivar un materia
+export const delMateria = async (id) => {
   // const token = JSON.parse(localStorage.getItem('token')) || '';
-  let url = `http://localhost:3004/alumnos/${id}`;
+  let url = `http://localhost:3004/materias/${id}`;
 
   const options = {
     method: 'DELETE',

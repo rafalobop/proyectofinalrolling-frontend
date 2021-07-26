@@ -1,8 +1,8 @@
 import axios from 'axios';
 import qs from 'qs';
 
-export const getAlumnos = async () => {
-  let url = `http://localhost:3004/alumnos`;
+export const getMaterias = async () => {
+  let url = `http://localhost:3004/materias`;
 
   const options = {
     method: 'GET',
@@ -12,14 +12,14 @@ export const getAlumnos = async () => {
   };
 
   const resp = await axios(url, options);
-  const { alumno } = resp.data;
+  const { materia } = resp.data;
   // const { data } = resp.data.alumno;
   // console.log(alumno);
-  return alumno;
+  return materia;
 };
 
-export const getAlumnoId = async (id) => {
-  let url = `http://localhost:3004/alumnos/${id}`;
+export const getMateriaId = async (id) => {
+  let url = `http://localhost:3004/materias/${id}`;
   const options = {
     method: 'GET',
     headers: {
@@ -34,10 +34,10 @@ export const getAlumnoId = async (id) => {
 };
 
 //Crear nuevo alumno
-export const addAlumno = async (datos) => {
+export const addMateria = async (datos) => {
   // console.log(datos);
   // const token = JSON.parse(localStorage.getItem('token')) || '';
-  let url = 'http://localhost:3004/alumnos';
+  let url = 'http://localhost:3004/materias';
 
   const options = {
     method: 'POST',
@@ -55,10 +55,10 @@ export const addAlumno = async (datos) => {
 };
 
 //Actualizar alumno
-export const modifAlumno = async (datos, id) => {
+export const modifMateria = async (datos, id) => {
   // console.log(datos);
   // const token = JSON.parse(localStorage.getItem('token')) || '';
-  let url = `http://localhost:3004/alumnos/${id}`;
+  let url = `http://localhost:3004/materias/${id}`;
 
   const options = {
     method: 'PUT',
@@ -76,9 +76,9 @@ export const modifAlumno = async (datos, id) => {
 };
 
 //Inactivar un alumno
-export const delAlumno = async (id) => {
+export const delMateria = async (id) => {
   // const token = JSON.parse(localStorage.getItem('token')) || '';
-  let url = `http://localhost:3004/alumnos/${id}`;
+  let url = `http://localhost:3004/materias/${id}`;
 
   const options = {
     method: 'DELETE',

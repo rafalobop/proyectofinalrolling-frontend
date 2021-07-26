@@ -5,9 +5,8 @@ import Home from './pages/Home';
 import Alumnos from './pages/Alumnos';
 import Error404 from './pages/Error404';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MateriasPage from './pages/MateriasPage';
-import Materia from './components/Materia';
-import AlumnoCard from './components/AlumnoCard';
+import Materias from './pages/Materias';
+import AlumnoDetail from './pages/AlumnoDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
@@ -18,9 +17,9 @@ const App = () => {
           <Route exact path="/" component={Login} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/alumnos" component={Alumnos} />
-          <Route exact path="/alumnos/:id" component={AlumnoCard} />
-          <Route exact path="/materias" component={MateriasPage} />
-          <Route exact path="/materias/:id" component={Materia} />
+          <Route exact path="/alumno/:id" component={AlumnoDetail} />
+          <Route exact path="/materia/:id" component={Materias} />
+          
           <Route component={Error404} />
         </Switch>
       </Router>

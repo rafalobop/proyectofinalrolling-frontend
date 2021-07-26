@@ -72,7 +72,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="sidebar mt-1">
+      <div className="sidebar mt-2">
         <div className={toggle ? 'list-container show' : 'list-container'}>
           <ul className="sidebar-list">
             <li className="list-item">
@@ -85,16 +85,7 @@ const Sidebar = () => {
                 </div>
               </NavLink>
             </li>
-            <li className="list-item">
-              <Link to="/materias">
-                <div className="item-container">
-                  <div className="item-icon">
-                    <FontAwesomeIcon icon={faBook} />
-                  </div>
-                  <div className="item-link">Materias</div>
-                </div>
-              </Link>
-            </li>
+            
             <li className="list-item">
               <Link to="/alumnos">
                 <div className="item-container">

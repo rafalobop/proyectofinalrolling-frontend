@@ -50,7 +50,7 @@ const TableAlumnos = ({ alumnos, setAlumnos, consultaAlumnos }) => {
         {!alumnos.loading && (
           <div className="row">
             <div className="col-12 mt-4">
-              <Table striped bordered hover className="mt-2">
+              <Table striped bordered hover responsive className="mt-2">
                 <thead>
                   <tr className="tabla">
                     <th>Nº Expediente</th>
@@ -66,7 +66,7 @@ const TableAlumnos = ({ alumnos, setAlumnos, consultaAlumnos }) => {
                       <td>{alumno.expediente}</td>
                       <td>
                         <Link
-                          to={`/alumnos/${alumno._id}`}
+                          to={`/alumno/${alumno._id}`}
                           className="link-alumno"
                         >
                           {alumno.nombreCompleto}

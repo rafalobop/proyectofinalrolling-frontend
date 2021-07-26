@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { modifAlumno } from '../helpers/rutaAlumnos';
+import { Link } from 'react-router-dom';
+
 
 import '../css/modalForm.css';
 import { Row, Col } from 'react-bootstrap';
 
 const ModalFormAlumno = ({ alumno, handleClose, consultaAlumnos }) => {
+  const [materia, setMateria] = useState({});
+  
   const datosAlumno = alumno.alumno;
   // console.log(datosAlumno);
   const [formValues, setFormValues] = useState({
@@ -35,6 +39,17 @@ const ModalFormAlumno = ({ alumno, handleClose, consultaAlumnos }) => {
       <Modal.Body>
         <Row>
           <Col xl={12} lg={12}>
+          <div className="form-group">
+              <label>Expediente</label>
+              <input
+                type="text"
+                className="form-control"
+                name="expediente"
+                required
+                value={formValues.expediente}
+                onChange={handleChange}
+              />
+            </div>
             <div className="form-group">
               <label>Nombre y Apellido</label>
               <input
@@ -43,28 +58,6 @@ const ModalFormAlumno = ({ alumno, handleClose, consultaAlumnos }) => {
                 name="nombreCompleto"
                 required
                 value={formValues.nombreCompleto}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Domicilio</label>
-              <input
-                type="text"
-                className="form-control"
-                name="domicilio"
-                required
-                value={formValues.domicilio}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Contacto</label>
-              <input
-                type="text"
-                className="form-control"
-                name="contacto"
-                required
-                value={formValues.contacto}
                 onChange={handleChange}
               />
             </div>
@@ -80,20 +73,29 @@ const ModalFormAlumno = ({ alumno, handleClose, consultaAlumnos }) => {
               />
             </div>
             <div className="form-group">
-              <label>Expediente</label>
+              <label>Domicilio</label>
               <input
                 type="text"
                 className="form-control"
-                name="expediente"
-                required
-                value={formValues.expediente}
+                name="domicilio"
+                value={formValues.domicilio}
                 onChange={handleChange}
               />
             </div>
+            <div className="form-group">
+              <label>Contacto</label>
+              <input
+                type="text"
+                className="form-control"
+                name="contacto"
+                value={formValues.contacto}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+            <Link to={`/materia/${materia._id}`}> <label>Calificaciones</label></Link>
+            </div>
           </Col>
-          {/* <Col xl={12} lg={12}>
-            <div></div>
-          </Col> */}
         </Row>
       </Modal.Body>
       <Modal.Footer>

@@ -27,7 +27,7 @@ const Alumnos = () => {
   return (
     <>
       <Layout />
-      <div className="home-container">
+      <div className="home-container mt-2">
         <div className="row">
           <div className="col color-titulo">
             <h1>Lista de Alumnos</h1>
