@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { postLogin } from '../helpers/rutaUsuarios';
 import '../css/LoginForm.css';
 import uuid from 'uuid/dist/v4';
+
 const LoginForm = () => {
   const history = useHistory();
   const [formValues, setFormValues] = useState({
@@ -15,37 +16,43 @@ const LoginForm = () => {
     data: { ok: null },
     loading: false,
   });
+  // console.log(user);
+
+  const datosUsuario = () => {
+    localStorage.setItem('token', JSON.stringify(user.data.token));
+    localStorage.setItem('id', JSON.stringify(user.data.usuario._id));
+    localStorage.setItem('nombre', JSON.stringify(user.data.usuario.nombre));
+    localStorage.setItem(
+      'apellido',
+      JSON.stringify(user.data.usuario.apellido)
+    );
+    localStorage.setItem(
+      'fechaIngreso',
+      JSON.stringify(user.data.usuario.fechaIngreso)
+    );
+    localStorage.setItem(
+      'contacto',
+      JSON.stringify(user.data.usuario.contacto)
+    );
+    localStorage.setItem('role', JSON.stringify(user.data.usuario.role));
+    localStorage.setItem('id', JSON.stringify(uuid()));
+    localStorage.setItem(
+      'nombreInstit',
+      JSON.stringify(user.data.usuario.nombreInstit)
+    );
+    localStorage.setItem(
+      'contactoInstit',
+      JSON.stringify(user.data.usuario.contactoInstit)
+    );
+    localStorage.setItem(
+      'direccion',
+      JSON.stringify(user.data.usuario.direccion)
+    );
+  };
 
   useEffect(() => {
     if (user.data.ok) {
-      localStorage.setItem('token', JSON.stringify(user.data.token));
-      localStorage.setItem('id', JSON.stringify(user.data.usuario._id));
-      localStorage.setItem('nombre', JSON.stringify(user.data.usuario.nombre));
-      localStorage.setItem(
-        'apellido',
-        JSON.stringify(user.data.usuario.apellido)
-      );
-      localStorage.setItem(
-        'fechaIngreso',
-        JSON.stringify(user.data.usuario.fechaIngreso)
-      );
-      localStorage.setItem(
-        'contacto',
-        JSON.stringify(user.data.usuario.contacto)
-      );
-      localStorage.setItem('id', JSON.stringify(uuid()));
-      localStorage.setItem(
-        'nombreInstit',
-        JSON.stringify(user.data.usuario.nombreInstit)
-      );
-      localStorage.setItem(
-        'contactoInstit',
-        JSON.stringify(user.data.usuario.contactoInstit)
-      );
-      localStorage.setItem(
-        'direccion',
-        JSON.stringify(user.data.usuario.direccion)
-      );
+      datosUsuario();
       history.push('./home');
     }
   }, [user, history]);
@@ -68,6 +75,7 @@ const LoginForm = () => {
     postLogin(formValues).then((datos) => {
       setUser(datos);
     });
+
     setFormValues({
       email: '',
       password: '',

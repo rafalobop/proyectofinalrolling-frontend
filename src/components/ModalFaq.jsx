@@ -6,9 +6,7 @@ const ModalFaq = ({ openModal, toggle }) => {
   return (
     <>
       <Modal isOpen={openModal} toggle={toggle}>
-        <ModalHeader>
-          <h5>Preguntas Frecuentes</h5>
-        </ModalHeader>
+        <ModalHeader>Preguntas Frecuentes</ModalHeader>
         <ModalBody>
           <div className="question">
             <p>¿Como cambio el nombre de usuario?</p>

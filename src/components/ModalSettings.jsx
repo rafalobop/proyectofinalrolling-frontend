@@ -4,13 +4,20 @@ import React from 'react';
 import { Modal, ModalBody, ModalHeader, ModalFooter, Button } from 'reactstrap';
 import '../css/modalsettings.css';
 
-const ModalSettings = ({ openModalSettings, toggleSettings }) => {
+const ModalSettings = ({
+  openModalSettings,
+  toggleSettings,
+  theme,
+  setTheme,
+}) => {
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+  };
+
   return (
     <>
       <Modal isOpen={openModalSettings} toggleSettings={toggleSettings}>
-        <ModalHeader>
-          <h5>Configuración</h5>
-        </ModalHeader>
+        <ModalHeader>Configuración</ModalHeader>
         <ModalBody>
           <div className="switch-button">
             <input
@@ -18,6 +25,7 @@ const ModalSettings = ({ openModalSettings, toggleSettings }) => {
               name="switch-button"
               id="switch-label"
               className="switch-button__checkbox"
+              onChange={() => themeToggler()}
             />
             <label for="switch-label" className="switch-button__label">
               <span>

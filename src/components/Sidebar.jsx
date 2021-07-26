@@ -17,6 +17,7 @@ import ModalSignout from './ModalSignout';
 const Sidebar = () => {
   const location = useLocation();
   const history = useHistory();
+
   const [user, setUser] = useState('');
   const [payload, setPayload] = useState({
     role: '',
@@ -39,8 +40,16 @@ const Sidebar = () => {
   const handleLogin = () => {
     localStorage.setItem('token', JSON.stringify(''));
     localStorage.setItem('id', JSON.stringify(''));
-    localStorage.setItem('usuario', JSON.stringify(''));
-    setUser(JSON.parse(localStorage.getItem('nombre')));
+    localStorage.setItem('nombre', JSON.stringify(''));
+    localStorage.setItem('apellido', JSON.stringify(''));
+    localStorage.setItem('fechaIngreso', JSON.stringify(''));
+    localStorage.setItem('contacto', JSON.stringify(''));
+    localStorage.setItem('role', JSON.stringify(''));
+    localStorage.setItem('id', JSON.stringify(''));
+    localStorage.setItem('nombreInstit', JSON.stringify(''));
+    localStorage.setItem('contactoInstit', JSON.stringify(''));
+    localStorage.setItem('direccion', JSON.stringify(''));
+    setUser(JSON.parse(localStorage.getItem('usuario')));
     setPayload({ role: '' });
     history.push('/');
   };
@@ -49,7 +58,10 @@ const Sidebar = () => {
     let token = JSON.parse(localStorage.getItem('token')) || '';
     if (token.length > 0) {
       let token_decode = jwt_decode(localStorage.getItem('token')); //Obteniendo los datos del payload
-      setPayload(token_decode.usuario);
+      setPayload(token_decode.usuario.role);
+    }
+    if (payload === 'ADMIN_ROLE') {
+      console.log('eres administrador');
     }
   };
 
@@ -76,7 +88,7 @@ const Sidebar = () => {
         <div className={toggle ? 'list-container show' : 'list-container'}>
           <ul className="sidebar-list">
             <li className="list-item">
-              <NavLink to="/home" exact activeClassName="active">
+              <NavLink to="/home" activeClassName="active">
                 <div className="item-container">
                   <div className="item-icon">
                     <FontAwesomeIcon icon={faHome} />
@@ -109,6 +121,7 @@ const Sidebar = () => {
               <ModalSignout
                 openModalSignout={openModalSignout}
                 toggleSignout={toggleSignout}
+                handleLogin={handleLogin}
               />
               <div className="item-container">
                 <div className="item-icon">
