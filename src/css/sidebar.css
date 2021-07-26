@@ -86,7 +86,7 @@
 @media screen and (min-width: 840px) {
   .sidebar {
     width: 28%;
-    min-height: 950px;
+    min-height: 560px;
   }
   .list-container {
     margin-left: 0%;

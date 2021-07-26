@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
@@ -21,7 +21,7 @@ const App = () => {
           <Route exact path="/alumnos/:id" component={AlumnoCard} />
           <Route exact path="/materias" component={MateriasPage} />
           <Route exact path="/materias/:id" component={Materia} />
-          <Route component={Error404} />
+          <Route path="*" component={Error404} />
         </Switch>
       </Router>
     </>

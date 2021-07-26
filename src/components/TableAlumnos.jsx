@@ -67,10 +67,7 @@ const TableAlumnos = ({ alumnos, setAlumnos, consultaAlumnos }) => {
                     <tr key={alumno._id}>
                       <td>{alumno.expediente}</td>
                       <td>
-                        <Link
-                          to={`/alumnos/${alumno._id}`}
-                          className="link-alumno"
-                        >
+                        <Link to={'*'} className="link-alumno">
                           {alumno.nombreCompleto}
                         </Link>
                       </td>
