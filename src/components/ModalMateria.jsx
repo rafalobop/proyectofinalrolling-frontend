@@ -1,33 +1,22 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
-import FormModalMateria from './FormModalMateria';
+import ModalFormMateria from './ModalFormMateria';
+import '../css/modalForm.css';
 
-const ModalMateria = ({
-  materiaSeleccionada,
-  show,
-  setMateria,
-  materia,
-  handleClose,
-  seleccion,
-  setSeleccion,
-}) => {
+const ModalMateria = ({ show, handleClose, materia, consultaMaterias }) => {
   return (
-    <>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modificar Materia</Modal.Title>
-        </Modal.Header>
-        <FormModalMateria
-          materia={materia}
-          setMateria={setMateria}
-          handleClose={handleClose}
-          materiaSeleccionada={materiaSeleccionada}
-          seleccion={seleccion}
-          setSeleccion={setSeleccion}
-        />
-      </Modal>
-    </>
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Modificar nota</Modal.Title>
+      </Modal.Header>
+      <ModalFormMateria
+        materia={materia}
+        handleClose={handleClose}
+        consultaMaterias={consultaMaterias}
+      />
+    </Modal>
   );
 };
 
 export default ModalMateria;
+

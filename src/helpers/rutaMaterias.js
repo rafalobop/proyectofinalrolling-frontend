@@ -13,8 +13,8 @@ export const getMaterias = async () => {
 
   const resp = await axios(url, options);
   const { materia } = resp.data;
-  // const { data } = resp.data.alumno;
-  // console.log(alumno);
+  // const { data } = resp.data.materia;
+  // console.log(materia);
   return materia;
 };
 
@@ -33,8 +33,8 @@ export const getMateriaId = async (id) => {
   return data;
 };
 
-//Crear nuevo alumno
-export const addMateria = async (datos) => {
+//Crear nuevo materia
+export const AddMateria = async (datos) => {
   // console.log(datos);
   // const token = JSON.parse(localStorage.getItem('token')) || '';
   let url = 'http://localhost:3004/materias';
@@ -54,7 +54,7 @@ export const addMateria = async (datos) => {
   return data;
 };
 
-//Actualizar alumno
+//Actualizar materia
 export const modifMateria = async (datos, id) => {
   // console.log(datos);
   // const token = JSON.parse(localStorage.getItem('token')) || '';
@@ -75,7 +75,7 @@ export const modifMateria = async (datos, id) => {
   return data;
 };
 
-//Inactivar un alumno
+//Inactivar un materia
 export const delMateria = async (id) => {
   // const token = JSON.parse(localStorage.getItem('token')) || '';
   let url = `http://localhost:3004/materias/${id}`;

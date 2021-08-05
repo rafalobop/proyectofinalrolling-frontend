@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { delMateria, getMateriaId } from '../helpers/rutaAlumnoss';
+import { delMateria, getMateriaId } from '../helpers/rutaMaterias';
 import { Table } from 'react-bootstrap';
 import ModalMateria from './ModalMateria';
 import '../css/tableAlumnos.css';
@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import swal from 'sweetalert';
 
-const TableMaterias = ({ materias, setMaterias, consultaMaterias }) => {
+const TableMaterias = ({ materias, consultaMaterias }) => {
   
-  console.log(materias.data);
+  
   let id_materia = '';
 
   const [materia, setMateria] = useState({});
@@ -40,7 +40,7 @@ const TableMaterias = ({ materias, setMaterias, consultaMaterias }) => {
     let validar = window.confirm('Borrar materia?');
     if (validar) {
       delMateria(id).then((resp) => {
-        consultaMateriass();
+        consultaMaterias();
       });
     }
     swal('Listo!', 'Materia eliminado', 'warning');
@@ -69,7 +69,7 @@ const TableMaterias = ({ materias, setMaterias, consultaMaterias }) => {
           
                       </td>
                       <td>{materia.nota}</td>
-                      {/* <td>{materia.alumno.nombreMateria}</td> */}
+                      {/* <td>{materia.alumno.nombreCompleto}</td> */}
 
                       
                       <td>

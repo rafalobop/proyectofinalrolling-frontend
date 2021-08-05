@@ -9,7 +9,7 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import swal from 'sweetalert';
 
 const TableAlumnos = ({ alumnos, setAlumnos, consultaAlumnos }) => {
-  console.log(alumnos.data);
+  
   let id_alumno = '';
 
   const [alumno, setAlumno] = useState({});

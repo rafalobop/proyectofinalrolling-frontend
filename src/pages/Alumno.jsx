@@ -3,9 +3,9 @@ import { getAlumnoId } from "../helpers/rutaAlumnos";
 import { useParams } from "react-router-dom";
 import Layout from '../components/Layout';
 import "../css/alumnodetail.css";
-import AlumnoCard from "../components/AlumnoCard";
+import AlumnoDetail from "../components/AlumnoDetail";
 
-const AlumnoDetail = () => {
+const Alumno = () => {
   const [data, setData] = useState({
     ok: false,
     alumno: {},
@@ -28,7 +28,7 @@ const AlumnoDetail = () => {
 
     <div className="container mt-2 alumno-container">
       {data.ok ? (
-        <AlumnoCard data={data} />
+        <AlumnoDetail data={data} />
       ) : (
         <div className="row">
           <div className="col">
@@ -42,4 +42,4 @@ const AlumnoDetail = () => {
     </>
   );
 };
-export default AlumnoDetail;
+export default Alumno;

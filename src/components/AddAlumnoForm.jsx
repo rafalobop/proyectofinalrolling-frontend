@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { addAlumno } from '../helpers/rutaAlumnos';
 
-const AddAlumnoForm = ({ setShow, setAlumnos, alumnos }) => {
-  // console.log(data);
-  // const id = JSON.parse(localStorage.getItem("Id"));
+const AddAlumnoForm = ({ setShow }) => {
+  const id = JSON.parse(localStorage.getItem("id"));
   const [formValues, setFormValues] = useState({
     nombreCompleto: '',
     domicilio: '',
@@ -11,7 +10,9 @@ const AddAlumnoForm = ({ setShow, setAlumnos, alumnos }) => {
     year: '',
     expediente: '',
     cuota: '',
-    // alumno: id,
+    dni: '',
+    fechaNacimiento: '',
+    alumno: id,
   });
 
   const handleChange = (e) => {
@@ -19,13 +20,13 @@ const AddAlumnoForm = ({ setShow, setAlumnos, alumnos }) => {
       ...formValues,
       [e.target.name]: e.target.value,
     });
-    // console.log(formValues);
+    
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addAlumno(formValues).then((resp) => {
-      console.log(resp);
+      
 
       setFormValues({
         nombreCompleto: '',
@@ -34,17 +35,27 @@ const AddAlumnoForm = ({ setShow, setAlumnos, alumnos }) => {
         year: '',
         expediente: '',
         cuota: '',
+        dni: '',
+        fechaNacimiento: '',
       });
-      // setAlumnos({
-      //   ...alumnos,
-      //   formValues,
-      // });
+      
       setShow(false);
     });
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label>Expediente</label>
+        <input
+          type="text"
+          className="form-control"
+          name="expediente"
+          required
+          value={formValues.expediente}
+          onChange={handleChange}
+        />
+      </div>
       <div className="form-group">
         <label>Nombre y Apellido</label>
         <input
@@ -53,6 +64,17 @@ const AddAlumnoForm = ({ setShow, setAlumnos, alumnos }) => {
           name="nombreCompleto"
           required
           value={formValues.nombreCompleto}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="form-group">
+        <label>Curso</label>
+        <input
+          type="text"
+          className="form-control"
+          name="year"
+          required
+          value={formValues.year}
           onChange={handleChange}
         />
       </div>
@@ -71,33 +93,34 @@ const AddAlumnoForm = ({ setShow, setAlumnos, alumnos }) => {
         <input
           className="form-control"
           type="text"
-          required
           name="contacto"
           value={formValues.contacto}
           onChange={handleChange}
         />
       </div>
       <div className="form-group">
-        <label>Curso</label>
+        <label>Fecha de Nacimiento</label>
         <input
-          type="text"
           className="form-control"
-          name="year"
-          value={formValues.year}
+          type="text"
+          name="fechaNacimiento"
+          value={formValues.fechaNacimiento}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="form-group">
+        <label>DNI</label>
+        <input
+          className="form-control"
+          type="text"
+          name="dni"
+          value={formValues.dni}
           onChange={handleChange}
         />
       </div>
 
-      <div className="form-group">
-        <label>Expediente</label>
-        <input
-          type="text"
-          className="form-control"
-          name="expediente"
-          value={formValues.expediente}
-          onChange={handleChange}
-        />
-      </div>
+     
+
       <div className="form-group">
         <label>Cuota</label>
         <select name="cuota">

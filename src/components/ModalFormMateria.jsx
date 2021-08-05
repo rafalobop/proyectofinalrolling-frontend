@@ -5,15 +5,17 @@ import { modifMateria } from '../helpers/rutaMaterias';
 import '../css/modalForm.css';
 import { Row, Col } from 'react-bootstrap';
 
-const ModalFormMateria = ({ materia, handleClose, consultaMaterias }) => {
+const ModalFormMateria = ({ materia, handleClose }) => {
   const datosMateria = materia.materia;
-  // console.log(datosAlumno);
+
+  const id = JSON.parse(localStorage.getItem("id"));
   const [formValues, setFormValues] = useState({
     nombreMateria: datosMateria.nombreCompleto,
     nota: datosMateria.nota,
-    
+    alumno: id, 
   });
-  console.log(`form`, formValues);
+  
+  
   const handleChange = (e) => {
     setFormValues({
       ...formValues,
@@ -69,4 +71,4 @@ const ModalFormMateria = ({ materia, handleClose, consultaMaterias }) => {
   );
 };
 
-export default ModalFormAlumno;
+export default ModalFormMateria;

@@ -11,7 +11,7 @@ const ModalFormAlumno = ({ alumno, handleClose, consultaAlumnos }) => {
   const [materia, setMateria] = useState({});
   
   const datosAlumno = alumno.alumno;
-  // console.log(datosAlumno);
+  
   const [formValues, setFormValues] = useState({
     nombreCompleto: datosAlumno.nombreCompleto,
     domicilio: datosAlumno.domicilio,
@@ -20,7 +20,7 @@ const ModalFormAlumno = ({ alumno, handleClose, consultaAlumnos }) => {
     expediente: datosAlumno.expediente,
     cuota: datosAlumno.cuota,
   });
-  console.log(`form`, formValues);
+  
   const handleChange = (e) => {
     setFormValues({
       ...formValues,
@@ -89,6 +89,26 @@ const ModalFormAlumno = ({ alumno, handleClose, consultaAlumnos }) => {
                 className="form-control"
                 name="contacto"
                 value={formValues.contacto}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Fecha de Nacimiento</label>
+              <input
+                type="text"
+                className="form-control"
+                name="fechaNacimiento"
+                value={formValues.fechaNacimiento}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>DNI</label>
+              <input
+                type="text"
+                className="form-control"
+                name="dni"
+                value={formValues.dni}
                 onChange={handleChange}
               />
             </div>

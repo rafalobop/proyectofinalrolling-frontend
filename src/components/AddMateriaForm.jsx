@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { addMateria } from '../helpers/rutaMaterias';
 
 const AddMateriaForm = ({ setShow, setMaterias, materias }) => {
-  // console.log(data);
+  
   const id = JSON.parse(localStorage.getItem("Id"));
   const [formValues, setFormValues] = useState({
     nombreMateria: '',
@@ -15,23 +15,20 @@ const AddMateriaForm = ({ setShow, setMaterias, materias }) => {
       ...formValues,
       [e.target.name]: e.target.value,
     });
-    // console.log(formValues);
+    
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addMateria(formValues).then((resp) => {
-      console.log(resp);
+     
 
       setFormValues({
         nombreMateria: '',
     
     nota: '',
       });
-      // setAlumnos({
-      //   ...alumnos,
-      //   formValues,
-      // });
+      
       setShow(false);
     });
   };

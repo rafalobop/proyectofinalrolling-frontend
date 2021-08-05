@@ -12,14 +12,14 @@ export const postLogin = async (datos) => {
   try {
     const resp = await axios(url, options);
     const { data } = resp;
-    // console.log(data);
+  
 
     return {
       data: data,
       loading: false,
     };
   } catch (error) {
-    // console.log(error);
+   
     return {
       data: error.response.data,
       loading: false,

@@ -1,5 +1,5 @@
 import React from 'react';
-const AlumnoCard = ({ data }) => {
+const AlumnoDetail = ({ data }) => {
   const { alumno } = data;
 
   return (
@@ -9,6 +9,7 @@ const AlumnoCard = ({ data }) => {
           <h2>Datos del Alumno</h2>
           <hr />
             <p>Nombre y Apellido: {alumno.nombreCompleto}</p>
+            <p>Nº Expediente: {alumno.expediente}</p>
             <p>Curso: {alumno.year}</p>
             <p>Cuota: {alumno.cuota}</p>
             <p>Domicilio: {alumno.domicilio}</p>
@@ -21,4 +22,4 @@ const AlumnoCard = ({ data }) => {
   );
 };
 
-export default AlumnoCard;
+export default AlumnoDetail;
