@@ -19,6 +19,9 @@ const ModalFormAlumno = ({ alumno, handleClose, consultaAlumnos }) => {
     year: datosAlumno.year,
     expediente: datosAlumno.expediente,
     cuota: datosAlumno.cuota,
+    fechaNacimiento: datosAlumno.fechaNacimiento,
+    dni: datosAlumno.dni,
+
   });
   
   const handleChange = (e) => {
@@ -112,6 +115,7 @@ const ModalFormAlumno = ({ alumno, handleClose, consultaAlumnos }) => {
                 onChange={handleChange}
               />
             </div>
+           
             <div className="form-group">
             <Link to={`/materia/${materia._id}`}> <label>Calificaciones</label></Link>
             </div>
